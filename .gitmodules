@@ -1,0 +1,3 @@
+[submodule "AndroidUtilCode"]
+	path = AndroidUtilCode
+	url = https://github.com/BrillantZhao/AndroidUtilCode.git
