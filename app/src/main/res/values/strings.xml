@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">"AndroidMouldProject "</string>
+    <string name="app_name">"AndroidMould"</string>
+    <string name="app_name_debug">"AndroidMouldDebug"</string>
 </resources>

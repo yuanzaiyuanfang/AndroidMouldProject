@@ -15,7 +15,7 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        set_context(getApplicationContext());
+        setContext(getApplicationContext());
     }
 
     public static synchronized BaseApplication context() {
@@ -24,11 +24,11 @@ public class BaseApplication extends MultiDexApplication {
 
     //================================ getter and setter start ====================================
 
-    public static Context get_context() {
+    public static Context getContext() {
         return _context;
     }
 
-    public static void set_context(Context _context) {
+    public static void setContext(Context _context) {
         BaseApplication._context = _context;
     }
 

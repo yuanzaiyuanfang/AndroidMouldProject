@@ -2,10 +2,10 @@ package com.brilliant;
 
 import android.annotation.TargetApi;
 import android.app.Application;
-import android.content.Context;
 import android.os.Build;
 
 import com.basemodule.base.BaseApplication;
+import com.blankj.utilcode.utils.StringUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.brilliant.api.RetrofitService;
 import com.brilliant.injector.components.ApplicationComponent;
@@ -15,8 +15,9 @@ import com.brilliant.local.dao.NewsTypeDao;
 import com.brilliant.local.table.DaoMaster;
 import com.brilliant.local.table.DaoSession;
 import com.brilliant.rxbus.RxBus;
+import com.brilliant.utils.Constants;
+import com.brilliant.utils.NativeUtils;
 import com.orhanobut.logger.Logger;
-import com.squareup.leakcanary.LeakCanary;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -33,8 +34,9 @@ public class AndroidApplication extends BaseApplication {
     private static final String DB_NAME = "news-db";
 
     private static ApplicationComponent sAppComponent;
-    private static Context sContext;
+
     private DaoSession mDaoSession;
+
     // 因为下载那边需要用，这里在外面实例化在通过 ApplicationModule 设置
     private RxBus mRxBus = new RxBus();
 
@@ -46,9 +48,12 @@ public class AndroidApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        _initDatabase();
-        _initInjector();
-        _initConfig();
+        String processName = NativeUtils.getCurProcessName(getApplicationContext());
+        if (!StringUtils.isEmpty(processName) && processName.equals(Constants.PACKAGE_NAME)) {
+            //  _initDatabase();
+            _initInjector();
+            _initConfig();
+        }
     }
 
     /**
@@ -57,10 +62,6 @@ public class AndroidApplication extends BaseApplication {
      */
     public static ApplicationComponent getAppComponent() {
         return sAppComponent;
-    }
-
-    public static Context getContext() {
-        return sContext;
     }
 
     /**
@@ -88,7 +89,7 @@ public class AndroidApplication extends BaseApplication {
      */
     private void _initConfig() {
         if (BuildConfig.DEBUG) {
-            LeakCanary.install(getApplication());
+           // LeakCanary.install(getApplication());
             Logger.init("LogTAG");
         }
         RetrofitService.init();

@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.blankj.utilcode.utils.NetUtil;
-import com.blankj.utilcode.utils.StringUtils;
 import com.brilliant.AndroidApplication;
 import com.brilliant.api.bean.NewsDetailInfo;
 import com.brilliant.api.bean.NewsInfo;
@@ -13,6 +12,7 @@ import com.brilliant.api.bean.PhotoSetInfo;
 import com.brilliant.api.bean.SpecialInfo;
 import com.brilliant.api.bean.WelfarePhotoInfo;
 import com.brilliant.api.bean.WelfarePhotoList;
+import com.brilliant.utils.NativeUtils;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
@@ -223,7 +223,7 @@ public class RetrofitService {
      * @return
      */
     public static Observable<PhotoSetInfo> getPhotoSet(String photoId) {
-        return sNewsService.getPhotoSet(StringUtils.clipPhotoSetId(photoId))
+        return sNewsService.getPhotoSet(NativeUtils.clipPhotoSetId(photoId))
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
