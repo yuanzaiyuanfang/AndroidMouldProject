@@ -10,7 +10,6 @@ buildscript {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'  // greenDAO
         classpath 'com.antfortune.freeline:gradle:0.8.4'
-        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -39,11 +38,13 @@ task clean(type: Delete) {
 }
 
 ext {
+    //===
     compileSdkVersion = 25
     buildToolsVersion = "25.0.2"
-
+    //===
     minSdkVersion = 19
     targetSdkVersion = 25
-
+    //===
     support = "25.3.0"
+    //===
 }
