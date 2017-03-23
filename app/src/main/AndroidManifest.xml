@@ -35,7 +35,13 @@
         </activity>
 
         <!-- ################################## activity start ################################## -->
-        <!-- 渠道，业务员车易贷订单详情页面 -->
+        <!-- 引导页 -->
+        <activity
+            android:name=".module.GuideActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
+            android:screenOrientation="portrait" />
+
+        <!-- 首页 -->
         <activity
             android:name=".module.HomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
@@ -69,11 +75,14 @@
         <!-- ################################## hotfix start ################################## -->
 
         <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="App ID" />
+        <meta-data
             android:name="com.taobao.android.hotfix.APPSECRET"
-            android:value="6c4f610b1f06942e7e7633bf4d480ee3" />
+            android:value="App Secret" />
         <meta-data
             android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCzml2ISo2iXTL9W5MQ2I4HPvWc2W1+OdYlGohH5EGi/yUBSi6qr/Y5A6UwleRGpQno/NVhP7UkshKrwQf9ElTuammwsa6P/c7ZONAxTMVv/MYOKqutEpWbZhhVSX2nOkMaeANzyZltZXaKa6RPpcis+tT+ujJyS4ZPyRdnSWz00X+ZUSL1OOMaIcKcFQmH+h7PkKO/1briTRyDBwA2dmO4Ucdk40AC3jJKamc4r5b0uoNTFMunlrgyp/xZiz+8EMLX3RIJMiAqg7IGGrlzuBYCpyuXC8Pu6WnARz25Pbez0uyCLhmURAe2bay6GWF9e1tDnN4RQUr1YQWbwJblKZMhAgMBAAECggEBAILVV39aN/ToCaXwmKBz8HqszYUWCqIiBbJ/snkUeRAA53caEAa9KhN8aVCMUH956E82J0axfwadReaiNmyPdxk6oYVa2jwAezdYIKlZMJaUv75ALVFlsWBDrkQqxgMU+R8GABXP7Rl5CTJqmYZ/0UDZdGGfR/JkvBHQ/mB6Z4mq+uWjCZwTDgncrrdPxPBq56b4tC2YJD3TCihRUiA0aTSuAkP7Dc5e7DA02tKO9GHHGNLoZ1mxXqdUiFWRVWtfS+O3/rIy8KSEPr67vJg79/os0q38sbpBd4adgdbcjkUGv/v45qUn6Lp8Mw8lqr8Ucezr6rTZ0M6LXHHXmneRqQECgYEA+8HVDIK731t1QYOHJe1OqAHSNg/c+lgLvIrAGPt5g4WbBTVKolQ3LZWCNziW6kK/AwIIzMY49YBjFM621ZMFhgXjgoW8ufwb1orsf7rOZPhvYdbxoKPXpP6iEtna9l3eMxqHENDnYKcCr5txr/1PH2p3+7V/0KKcjr2vrpNyz/ECgYEAtqE8Kaub5/KAbGBLHeV5aC0T5Df9Px82WESH/PHdc2AyDE8AUWbWR0Xt5I5xv147YlHuL3ZDBxwabSdD05sD2jKDKjVhbPDN+De53M4bXHGq+GnzLVpmKp4b+K9m7oU9hbbQ9V90XXoh/qFKxW2fqXN0c5dgQwJ0s15qwYhyJjECgYEArv9OS5L4asrVF8QIhnmNKkWRzFh8f1wCVH2SCAuNrLmLRzSC+5FUhZAeYqooZRAeXEXmvgivgR9MQCNsfcrjlQS033588D7pTtlkiWjdnNv/+F+Dt+kLtbn2COp8RLJ9CMLQzgSYQNv2hwCjJvUKMck9O68u+GSANMxvuQbvUNECgYB3asRxJvJB33KT6v8TJGqXcOpRzz572MfrPZyCDBDWkW8IV1wI3ip83j/otC+yh0ZjStlpFXZMnta0yvjx06nYMjFMFy2GU4sKpD2XIPoJH5ZA6t6EqFinw0zc9qxiiKMq3NiTqX/oY6T437SJld3RqlnZ/4CFMIToiHNb6wFg8QKBgQDqY08mT7N13NjkCDJ22UR0dj1IzpPAelOkRHNHpwmtzsiHwbDBteDEPMlL5KfUdvQC0QVqmkEM2GzObZyG0YoUhPB1XBdTM+w7RnAuwtOfzG0QYVhGoFpfrm6tvJH+z9/4nAnaffwUznIVZlkzu9leEYxxJ2JpHUj3yrPnjwNCRA==" />
+            android:value="RSA密钥" />
 
         <!-- ################################## hotfix end ################################## -->
 

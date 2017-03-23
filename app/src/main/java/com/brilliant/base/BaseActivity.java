@@ -1,5 +1,6 @@
 package com.brilliant.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -31,6 +32,10 @@ import butterknife.ButterKnife;
  * 基类Activity
  */
 public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompatActivity implements IBaseView {
+
+    public final String TAG = this.getClass().getSimpleName();
+
+    protected Context mContext;
 
     /**
      * 把 EmptyLayout 放在基类统一处理，@Nullable 表明 View 可以为 null，详细可看 ButterKnife
@@ -78,6 +83,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         setContentView(attachLayoutRes());
         ButterKnife.bind(this);
         initInjector();

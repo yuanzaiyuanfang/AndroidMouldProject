@@ -1,6 +1,5 @@
 package com.brilliant.module;
 
-import com.basemodule.widget.SimpleButton;
 import com.brilliant.AndroidApplication;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
@@ -9,32 +8,30 @@ import com.brilliant.utils.RxHelper;
 import com.brilliant.utils.UIFactory;
 import com.orhanobut.logger.Logger;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import rx.Subscriber;
 
-
 /**
- * 启动页面
+ * description:
+ * Date: 2017/2/13 11:10
+ * User: Administrator
  */
-public class SplashActivity extends BaseActivity {
-
-    @BindView(R.id.sb_skip)
-    SimpleButton mSbSkip;
+public class GuideActivity extends BaseActivity {
 
     private boolean mIsSkip = false;
 
     @Override
     protected int attachLayoutRes() {
-        return R.layout.activity_splash;
+        return R.layout.activity_guide;
     }
 
     @Override
     protected void initInjector() {
+
     }
 
     @Override
     protected void initViews() {
+
     }
 
     @Override
@@ -55,41 +52,34 @@ public class SplashActivity extends BaseActivity {
 
                     @Override
                     public void onNext(Integer integer) {
-                        mSbSkip.setText("跳过 " + integer);
                     }
                 });
     }
 
-    /**
-     *
-     */
     private void _doSkip() {
         if (!mIsSkip) {
             mIsSkip = true;
-            //跳转到MainActivity，并结束当前的LauncherActivity
-            //=== 和本次的软件版本号作对比，用来判断软件是否进行了更新，从而决定是否展示引导页
-            if (AndroidApplication.getPackageInfo() != null && !AndroidApplication.getPackageInfo().versionName.equals(
-                    AndroidApplication.ebSharedPrefManager.
-                            getKDPreferenceVersion().
-                            getString(EBSharedPrefVersion.PREFS_PREVERSION, "0.0.0"))) {
-                UIFactory.startGuideActivity(this, RESULT_OK);
-            } else {
-                UIFactory.startHomeActivity(this, RESULT_OK);
-            }
+            //在sp中记录访问过引导页的状态
+            AndroidApplication.ebSharedPrefManager.getKDPreferenceVersion().saveString(EBSharedPrefVersion.PREFS_PREVERSION,
+                    AndroidApplication.getPackageInfo().versionName);
+            UIFactory.startHomeActivity(this, RESULT_OK);
             //===
             finish();
             overridePendingTransition(R.anim.hold, R.anim.zoom_in_exit);
         }
     }
 
-    @OnClick(R.id.sb_skip)
-    public void onClick() {
-        _doSkip();
-    }
-
     @Override
     public void onBackPressed() {
-        // 不响应后退键
-        return;
+        backPressConform();
+    }
+
+    /**
+     * @Description
+     * @author BrillantZhao
+     * @date 2015-1-16 下午12:56:28
+     */
+    private void backPressConform() {
+        finish();
     }
 }

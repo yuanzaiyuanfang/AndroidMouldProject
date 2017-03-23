@@ -12,7 +12,7 @@ import com.brilliant.api.bean.PhotoSetInfo;
 import com.brilliant.api.bean.SpecialInfo;
 import com.brilliant.api.bean.WelfarePhotoInfo;
 import com.brilliant.api.bean.WelfarePhotoList;
-import com.brilliant.utils.NativeUtils;
+import com.brilliant.utils.NativeUtil;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
@@ -223,7 +223,7 @@ public class RetrofitService {
      * @return
      */
     public static Observable<PhotoSetInfo> getPhotoSet(String photoId) {
-        return sNewsService.getPhotoSet(NativeUtils.clipPhotoSetId(photoId))
+        return sNewsService.getPhotoSet(NativeUtil.clipPhotoSetId(photoId))
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())

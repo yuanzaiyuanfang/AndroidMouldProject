@@ -69,9 +69,12 @@
 -keep class cn.sharesdk.onekeyshare.theme.classic.EditPage
 
 #ali httpdns 混淆
--keep class com.alibaba.sdk.android.**{*;}
--keep class com.ut.**{*;}
--keep class com.ta.**{*;}
+-printmapping mapping.txt
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keep class com.taobao.android.**{*;}
+-keep class com.ta.utdid2.device.**{*;}
 
 # 个推的混淆
 -dontwarn com.igexin.**

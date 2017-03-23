@@ -1,7 +1,10 @@
 package com.basemodule.base;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.support.multidex.MultiDexApplication;
+
+import com.basemodule.utils.NativeUtil;
 
 /**
  * description:
@@ -10,12 +13,16 @@ import android.support.multidex.MultiDexApplication;
  */
 public class BaseApplication extends MultiDexApplication {
 
-   private static Context _context;
+    private static Context _context;
+
+    private static PackageInfo packageInfo;
 
     @Override
     public void onCreate() {
         super.onCreate();
         setContext(getApplicationContext());
+        // 安装包信息
+        setPackageInfo(NativeUtil.getPackageInfo(getContext()));
     }
 
     public static synchronized BaseApplication context() {
@@ -32,6 +39,18 @@ public class BaseApplication extends MultiDexApplication {
         BaseApplication._context = _context;
     }
 
+    public static PackageInfo getPackageInfo() {
+        if (packageInfo == null) {
+            packageInfo = NativeUtil.getPackageInfo(getContext());
+        }
+        return packageInfo;
+    }
+
+    public static void setPackageInfo(PackageInfo packageInfo) {
+        BaseApplication.packageInfo = packageInfo;
+    }
+
     //================================ getter and setter end ====================================
+
 
 }
