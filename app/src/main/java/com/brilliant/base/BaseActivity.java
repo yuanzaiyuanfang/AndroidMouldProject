@@ -14,7 +14,7 @@ import com.basemodule.base.IBasePresenter;
 import com.basemodule.base.IBaseView;
 import com.basemodule.widget.EmptyLayout;
 import com.basemodule.widget.SwipeRefreshHelper;
-import com.brilliant.AndroidApplication;
+import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.injector.components.ApplicationComponent;
 import com.brilliant.injector.modules.ActivityModule;
@@ -146,8 +146,8 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
      * @return ApplicationComponent
      */
     protected ApplicationComponent getAppComponent() {
-        return AndroidApplication.getAppComponent();
-//        return ((AndroidApplication) getApplication()).getAppComponent();
+        return AndroidAPP.getAppComponent();
+//        return ((AndroidAPP) getApplication()).getAppComponent();
     }
 
     /**

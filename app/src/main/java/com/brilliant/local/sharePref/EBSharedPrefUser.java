@@ -3,7 +3,6 @@ package com.brilliant.local.sharePref;
 import android.content.Context;
 
 
-
 /**
  * <用户信息缓存>
  *
@@ -12,11 +11,13 @@ import android.content.Context;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class EBSharedPrefVersion extends BaseSharedPreference {
+public class EBSharedPrefUser extends BaseSharedPreference {
 
-    public EBSharedPrefVersion(Context context, String fileName) {
+    public EBSharedPrefUser(Context context, String fileName) {
         super(context, fileName);
     }
 
     public static final String PREFS_PREVERSION = "prefs_preversion"; // 标注版本号
+
+    public static final String LOGIN_USERINFO = "LOGIN_USERINFO"; // 登录用户的信息
 }

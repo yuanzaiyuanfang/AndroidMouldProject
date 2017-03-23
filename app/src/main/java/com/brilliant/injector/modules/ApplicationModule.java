@@ -2,7 +2,7 @@ package com.brilliant.injector.modules;
 
 import android.content.Context;
 
-import com.brilliant.AndroidApplication;
+import com.brilliant.AndroidAPP;
 import com.brilliant.local.table.DaoSession;
 import com.brilliant.rxbus.RxBus;
 
@@ -18,11 +18,11 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private final AndroidApplication mApplication;
+    private final AndroidAPP mApplication;
     private final DaoSession mDaoSession;
     private final RxBus mRxBus;
 
-    public ApplicationModule(AndroidApplication application, DaoSession daoSession, RxBus rxBus) {
+    public ApplicationModule(AndroidAPP application, DaoSession daoSession, RxBus rxBus) {
         mApplication = application;
         mDaoSession = daoSession;
         mRxBus = rxBus;

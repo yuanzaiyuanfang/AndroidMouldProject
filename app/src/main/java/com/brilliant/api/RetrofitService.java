@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.blankj.utilcode.utils.NetUtil;
-import com.brilliant.AndroidApplication;
+import com.brilliant.AndroidAPP;
 import com.brilliant.api.bean.NewsDetailInfo;
 import com.brilliant.api.bean.NewsInfo;
 import com.brilliant.api.bean.PhotoInfo;
@@ -75,7 +75,7 @@ public class RetrofitService {
      */
     public static void init() {
         // 指定缓存路径,缓存大小100Mb
-        Cache cache = new Cache(new File(AndroidApplication.getContext().getCacheDir(), "HttpCache"),
+        Cache cache = new Cache(new File(AndroidAPP.getContext().getCacheDir(), "HttpCache"),
                 1024 * 1024 * 100);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().cache(cache)
                 .retryOnConnectionFailure(true)
@@ -111,13 +111,13 @@ public class RetrofitService {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            if (!NetUtil.isNetworkAvailable(AndroidApplication.getContext())) {
+            if (!NetUtil.isNetworkAvailable(AndroidAPP.getContext())) {
                 request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
                 Logger.e("no network");
             }
             Response originalResponse = chain.proceed(request);
 
-            if (NetUtil.isNetworkAvailable(AndroidApplication.getContext())) {
+            if (NetUtil.isNetworkAvailable(AndroidAPP.getContext())) {
                 //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
                 String cacheControl = request.cacheControl().toString();
                 return originalResponse.newBuilder()

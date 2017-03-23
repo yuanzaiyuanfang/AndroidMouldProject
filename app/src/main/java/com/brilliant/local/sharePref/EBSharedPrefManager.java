@@ -16,15 +16,24 @@ import com.brilliant.local.BridgeLifeCycleListener;
  */
 public class EBSharedPrefManager implements BridgeLifeCycleListener {
 
-    private Context mApplicationContext;
+    /**
+     * SharedPreference文件名列表
+     */
+    private static final String PREF_NAME_USERINFO = "userinfo";
 
-    /** SharedPreference文件名列表 */
-    private static final String PREF_NAME_VERSION = "version";
+    private static final String PREF_NAME_SETTING = "setting";
 
     /**
-     * 应用版本信息
+     * 用户信息缓存
      */
-    private static EBSharedPrefVersion mEBSharedPrefVersion;
+    private static EBSharedPrefUser mEBSharedPrefUser;
+
+    /**
+     * 设置信息缓存
+     */
+    private EBSharedPrefSetting mEBSharedPrefSetting;
+
+    private Context mApplicationContext;
 
     @Override
     public void initOnApplicationCreate(Context context) {
@@ -37,10 +46,22 @@ public class EBSharedPrefManager implements BridgeLifeCycleListener {
 
     /**
      * 用户信息缓存
+     *
      * @return
      */
-    public EBSharedPrefVersion getKDPreferenceVersion() {
-        return mEBSharedPrefVersion == null ? mEBSharedPrefVersion = new EBSharedPrefVersion(
-                mApplicationContext, PREF_NAME_VERSION) : mEBSharedPrefVersion;
+    public EBSharedPrefUser getKDPreferenceUserInfo() {
+        if (mEBSharedPrefUser == null) {
+            mEBSharedPrefUser = new EBSharedPrefUser(mApplicationContext, PREF_NAME_USERINFO);
+        }
+        return mEBSharedPrefUser;
+    }
+
+    /**
+     * 设置信息缓存
+     */
+    public EBSharedPrefSetting getKDPreferenceTestSetting() {
+        return mEBSharedPrefSetting == null ? mEBSharedPrefSetting = new EBSharedPrefSetting(
+                mApplicationContext, PREF_NAME_SETTING)
+                : mEBSharedPrefSetting;
     }
 }

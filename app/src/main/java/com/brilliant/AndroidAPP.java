@@ -15,6 +15,7 @@ import com.brilliant.injector.components.ApplicationComponent;
 import com.brilliant.injector.components.DaggerApplicationComponent;
 import com.brilliant.injector.modules.ApplicationModule;
 import com.brilliant.local.BridgeFactory;
+import com.brilliant.local.BridgeLifeCycleSetKeeper;
 import com.brilliant.local.Bridges;
 import com.brilliant.local.dao.NewsTypeDao;
 import com.brilliant.local.sharePref.EBSharedPrefManager;
@@ -38,7 +39,7 @@ import static com.antfortune.freeline.FreelineCore.getApplication;
  * User: Administrator
  */
 @SuppressWarnings("unused")
-public class AndroidApplication extends BaseApplication {
+public class AndroidAPP extends BaseApplication {
 
     private static final String DB_NAME = "news-db";
 
@@ -63,7 +64,10 @@ public class AndroidApplication extends BaseApplication {
         super.onCreate();
         String processName = NativeUtil.getCurProcessName(getApplicationContext());
         if (!StringUtils.isEmpty(processName) && processName.equals(Constants.PACKAGE_NAME)) {
-            BridgeFactory.init(this);  // 缓存类初始化
+            //=== 缓存类初始化
+            BridgeFactory.init(this);
+            BridgeLifeCycleSetKeeper.getInstance().initOnApplicationCreate(this);
+            //===
             AndroidUtilsCode.init(getContext()); // AndroidUtilsCode工具类初始化
             ebSharedPrefManager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
             //  _initDatabase();

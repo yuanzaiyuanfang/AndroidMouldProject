@@ -1,9 +1,9 @@
 package com.brilliant.module;
 
-import com.brilliant.AndroidApplication;
+import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
-import com.brilliant.local.sharePref.EBSharedPrefVersion;
+import com.brilliant.local.sharePref.EBSharedPrefUser;
 import com.brilliant.utils.RxHelper;
 import com.brilliant.utils.UIFactory;
 import com.orhanobut.logger.Logger;
@@ -56,12 +56,15 @@ public class GuideActivity extends BaseActivity {
                 });
     }
 
+    /**
+     *
+     */
     private void _doSkip() {
         if (!mIsSkip) {
             mIsSkip = true;
             //在sp中记录访问过引导页的状态
-            AndroidApplication.ebSharedPrefManager.getKDPreferenceVersion().saveString(EBSharedPrefVersion.PREFS_PREVERSION,
-                    AndroidApplication.getPackageInfo().versionName);
+            AndroidAPP.ebSharedPrefManager.getKDPreferenceUserInfo().saveString(EBSharedPrefUser.PREFS_PREVERSION,
+                    AndroidAPP.getPackageInfo().versionName);
             UIFactory.startHomeActivity(this, RESULT_OK);
             //===
             finish();

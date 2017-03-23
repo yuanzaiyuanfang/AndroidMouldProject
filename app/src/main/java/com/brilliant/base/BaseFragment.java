@@ -13,7 +13,7 @@ import com.basemodule.base.IBasePresenter;
 import com.basemodule.base.IBaseView;
 import com.basemodule.widget.EmptyLayout;
 import com.basemodule.widget.SwipeRefreshHelper;
-import com.brilliant.AndroidApplication;
+import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.injector.components.ApplicationComponent;
 import com.orhanobut.logger.Logger;
@@ -137,7 +137,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
      * @return ApplicationComponent
      */
     protected ApplicationComponent getAppComponent() {
-        return AndroidApplication.getAppComponent();
+        return AndroidAPP.getAppComponent();
 //        return ((MvpApplication) getActivity().getApplication().get).getAppComponent();
     }
 
