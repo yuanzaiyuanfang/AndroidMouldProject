@@ -1,15 +1,47 @@
 package com.brilliant.module;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
+import com.blankj.utilcode.utils.ToastUtils;
 import com.brilliant.R;
+import com.brilliant.base.BaseActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
+
+    private long mExitTime = 0;  // 检测退出
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+    protected int attachLayoutRes() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    protected void initInjector() {
+
+    }
+
+    @Override
+    protected void initViews() {
+
+    }
+
+    @Override
+    protected void updateViews(boolean isRefresh) {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        _exit();
+    }
+
+    /**
+     * 退出
+     */
+    private void _exit() {
+        if (System.currentTimeMillis() - mExitTime > 2000) {
+            ToastUtils.showToast("再按一次退出程序");
+            mExitTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
     }
 }

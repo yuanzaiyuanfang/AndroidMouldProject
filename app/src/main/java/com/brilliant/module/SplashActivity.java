@@ -4,7 +4,7 @@ import com.basemodule.widget.SimpleButton;
 import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
-import com.brilliant.local.sharePref.EBSharedPrefUser;
+import com.brilliant.local.sharePref.EBSharedPrefVersion;
 import com.brilliant.utils.RxHelper;
 import com.brilliant.utils.UIFactory;
 import com.orhanobut.logger.Logger;
@@ -71,7 +71,7 @@ public class SplashActivity extends BaseActivity {
             if (AndroidAPP.getPackageInfo() != null && !AndroidAPP.getPackageInfo().versionName.equals(
                     AndroidAPP.ebSharedPrefManager.
                             getKDPreferenceUserInfo().
-                            getString(EBSharedPrefUser.PREFS_PREVERSION, "0.0.0"))) {
+                            getString(EBSharedPrefVersion.PREFS_PREVERSION, "0.0.0"))) {
                 UIFactory.startGuideActivity(this, RESULT_OK);
             } else {
                 UIFactory.startHomeActivity(this, RESULT_OK);

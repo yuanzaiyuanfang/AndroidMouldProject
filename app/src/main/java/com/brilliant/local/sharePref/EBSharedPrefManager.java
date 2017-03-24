@@ -19,14 +19,14 @@ public class EBSharedPrefManager implements BridgeLifeCycleListener {
     /**
      * SharedPreference文件名列表
      */
-    private static final String PREF_NAME_USERINFO = "userinfo";
+    private static final String PREF_NAME_VERSION = "version";
 
     private static final String PREF_NAME_SETTING = "setting";
 
     /**
      * 用户信息缓存
      */
-    private static EBSharedPrefUser mEBSharedPrefUser;
+    private static EBSharedPrefVersion mEBSharedPrefVersion;
 
     /**
      * 设置信息缓存
@@ -49,11 +49,11 @@ public class EBSharedPrefManager implements BridgeLifeCycleListener {
      *
      * @return
      */
-    public EBSharedPrefUser getKDPreferenceUserInfo() {
-        if (mEBSharedPrefUser == null) {
-            mEBSharedPrefUser = new EBSharedPrefUser(mApplicationContext, PREF_NAME_USERINFO);
+    public EBSharedPrefVersion getKDPreferenceUserInfo() {
+        if (mEBSharedPrefVersion == null) {
+            mEBSharedPrefVersion = new EBSharedPrefVersion(mApplicationContext, PREF_NAME_VERSION);
         }
-        return mEBSharedPrefUser;
+        return mEBSharedPrefVersion;
     }
 
     /**
