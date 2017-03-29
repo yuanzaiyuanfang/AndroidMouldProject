@@ -23,7 +23,7 @@
         tools:replace="android:label">
 
         <activity
-            android:name=".module.SplashActivity"
+            android:name=".SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">

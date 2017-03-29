@@ -1,12 +1,14 @@
 package com.brilliant.module;
 
+import android.os.SystemClock;
+
 import com.blankj.utilcode.utils.ToastUtils;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
 
 public class HomeActivity extends BaseActivity {
 
-    private long mExitTime = 0;  // 检测退出
+    private long mBackPressedTime; // 退出应用相关
 
     @Override
     protected int attachLayoutRes() {
@@ -28,20 +30,24 @@ public class HomeActivity extends BaseActivity {
 
     }
 
+    //==============================================================================================
+
     @Override
     public void onBackPressed() {
-        _exit();
+        userExit();
     }
 
     /**
-     * 退出
+     * 退出登录
      */
-    private void _exit() {
-        if (System.currentTimeMillis() - mExitTime > 2000) {
-            ToastUtils.showToast("再按一次退出程序");
-            mExitTime = System.currentTimeMillis();
-        } else {
+    private void userExit() {
+        long curTime = SystemClock.uptimeMillis();
+        if ((curTime - mBackPressedTime) < (2 * 1000)) {
             finish();
+        } else {
+            mBackPressedTime = curTime;
+            ToastUtils.showToast(R.string.app_exit_confirm);
         }
+        finish();
     }
 }

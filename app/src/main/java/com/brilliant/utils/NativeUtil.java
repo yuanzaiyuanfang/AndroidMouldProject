@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.text.TextUtils;
 
-import com.brilliant.module.SplashActivity;
+import com.brilliant.SplashActivity;
 
 /**
  * description:

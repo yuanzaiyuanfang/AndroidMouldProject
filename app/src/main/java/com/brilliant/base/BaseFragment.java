@@ -37,17 +37,20 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
     @Nullable
     @BindView(R.id.empty_layout)
     EmptyLayout mEmptyLayout;
+
     @Nullable
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
+
     @Inject
     protected T mPresenter;
 
     protected Context mContext;
+
     //缓存Fragment view
     private View mRootView;
-    private boolean mIsMulti = false;
 
+    private boolean mIsMulti = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

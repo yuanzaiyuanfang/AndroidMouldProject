@@ -1,6 +1,8 @@
 package com.brilliant.base;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -44,11 +46,13 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
     @BindView(R.id.empty_layout)
     protected EmptyLayout mEmptyLayout;
     /**
+     *
      * 把 Presenter 提取到基类需要配合基类的 initInjector() 进行注入，如果继承这个基类则必定要提供一个 Presenter 注入方法，
      * 该APP所有 Presenter 都是在 Module 提供注入实现，也可以选择提供另外不带 Presenter 的基类
      */
     @Inject
     protected T mPresenter;
+
     /**
      * 刷新控件，注意，资源的ID一定要一样
      */
@@ -244,5 +248,22 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 重写，防止由于系统字体改变引起应用程序字体改变
+     *
+     * @return
+     */
+    @Override
+    public Resources getResources() {
+        Resources res = super.getResources();
+        Configuration config = new Configuration();
+        //得到一个配置
+        config.setToDefaults();
+        //给这个配置设置成预设值，也就是fontScale的值(这里取值为1）
+        res.updateConfiguration(config, res.getDisplayMetrics());
+        //更新资源里面的配置
+        return res;
     }
 }

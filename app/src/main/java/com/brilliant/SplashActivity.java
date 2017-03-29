@@ -1,8 +1,6 @@
-package com.brilliant.module;
+package com.brilliant;
 
 import com.basemodule.widget.SimpleButton;
-import com.brilliant.AndroidAPP;
-import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
 import com.brilliant.local.sharePref.EBSharedPrefVersion;
 import com.brilliant.utils.RxHelper;
