@@ -1,2 +1,2 @@
-include ':app', ':basemodule', ':utilcode'
+include ':app', ':basemodule', ':utilcode', ':RecyclerViewHelper'
 project(':utilcode').projectDir = new File('AndroidUtilCode/utilcode')

@@ -15,9 +15,8 @@ import com.brilliant.base.BaseFragment;
 import com.brilliant.injector.modules.NewsMainModule;
 import com.brilliant.local.table.NewsTypeInfo;
 import com.brilliant.module.mvpmodle.news.channel.ChannelActivity;
+import com.brilliant.module.mvpmodle.news.newslist.NewsListFragment;
 import com.brilliant.rxbus.event.ChannelEvent;
-import com.dl7.mvp.injector.components.DaggerNewsMainComponent;
-import com.dl7.mvp.module.news.newslist.NewsListFragment;
 
 import java.util.ArrayList;
 import java.util.List;

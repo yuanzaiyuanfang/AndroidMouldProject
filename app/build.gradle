@@ -208,7 +208,7 @@ dependencies {
     compile 'com.github.jhy:jsoup:jsoup-1.10.2'
     // ali hotfix 传递性依赖utdid这个sdk, 所以不需要重复依赖utdid.但是另一方面其它阿里系SDK也可能依赖了utdid这个SDK,
     // 如果编译期间报utdid重复, 所以此时进行如下处理即可, 关闭传递性依赖
-    compile ('com.taobao.android:alisdk-hotfix:2.0.1') {
+    compile('com.taobao.android:alisdk-hotfix:2.0.1') {
         transitive = false
     }
     // butterknife
@@ -217,6 +217,7 @@ dependencies {
     //=== 引用工程
     compile project(':basemodule')
     compile project(':utilcode')
+    compile project(':RecyclerViewHelper')
 }
 
 // 使用统一的配置

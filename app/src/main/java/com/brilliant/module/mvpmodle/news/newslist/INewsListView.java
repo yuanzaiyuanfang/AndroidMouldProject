@@ -1,5 +1,7 @@
 package com.brilliant.module.mvpmodle.news.newslist;
 
+import com.basemodule.base.ILoadDataView;
+import com.brilliant.adapter.item.NewsMultiItem;
 import com.brilliant.api.bean.NewsInfo;
 
 import java.util.List;

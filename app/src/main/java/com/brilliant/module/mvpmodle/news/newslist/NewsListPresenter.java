@@ -1,12 +1,12 @@
 package com.brilliant.module.mvpmodle.news.newslist;
 
-import com.dl7.mvp.adapter.item.NewsMultiItem;
-import com.dl7.mvp.api.NewsUtils;
-import com.dl7.mvp.api.RetrofitService;
-import com.dl7.mvp.api.bean.NewsInfo;
-import com.dl7.mvp.module.base.IBasePresenter;
-import com.dl7.mvp.utils.ToastUtils;
-import com.dl7.mvp.widget.EmptyLayout;
+import com.basemodule.base.IBasePresenter;
+import com.basemodule.widget.EmptyLayout;
+import com.blankj.utilcode.utils.ToastUtils;
+import com.brilliant.adapter.item.NewsMultiItem;
+import com.brilliant.api.NewsUtils;
+import com.brilliant.api.RetrofitService;
+import com.brilliant.api.bean.NewsInfo;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
