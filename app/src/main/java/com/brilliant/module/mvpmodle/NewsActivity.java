@@ -1,17 +1,24 @@
-package com.brilliant.module;
+package com.brilliant.module.mvpmodle;
+
+import android.widget.FrameLayout;
 
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
+import com.brilliant.module.mvpmodle.news.main.NewsMainFragment;
+
+import butterknife.BindView;
 
 /**
  * description:
  * Date: 2017/2/13 11:10
  * User: Administrator
  */
-public class ModelActivity extends BaseActivity {
+public class NewsActivity extends BaseActivity {
 
     //=================================== 自定义变量 start ==================================
 
+    @BindView(R.id.fl_container)
+    FrameLayout mFlContainer;
 
     //=================================== 自定义变量 end ==================================
 
@@ -34,8 +41,9 @@ public class ModelActivity extends BaseActivity {
 
     @Override
     protected void updateViews(boolean isRefresh) {
-
+        addFragment(R.id.fl_container, new NewsMainFragment(), "News");
     }
+
 
     //=================================== 重写自定义方法 end ==================================
 

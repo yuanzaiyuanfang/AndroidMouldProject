@@ -50,4 +50,6 @@ public class HomeActivity extends BaseActivity {
         }
         finish();
     }
+
+    //=================================== 重写系统方法 end ==================================
 }

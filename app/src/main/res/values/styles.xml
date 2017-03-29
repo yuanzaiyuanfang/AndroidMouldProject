@@ -42,4 +42,12 @@
         <!--<item name="android:windowBackground">@mipmap/ic_github</item>-->
     </style>
 
+    <style name="manage_title">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="manage_sub_title">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>
