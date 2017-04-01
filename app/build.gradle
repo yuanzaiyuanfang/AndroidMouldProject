@@ -27,16 +27,7 @@ android {
                     APP_ICON        : "@mipmap/ic_launcher",
                     // UMENT配置
                     UMENG_APPKEY    : "562dd44967e58e4437004451",
-                    // GETUI配置-- release
-                    GETUI_APP_ID    : "Fq52KEzzCA7fru1lFyTwn1",
-                    GETUI_APP_KEY   : "oJtCcQ6HH2AOovt5Gknz98",
-                    GETUI_APP_SECRET: "y2Fm0f04Xd6L2WPWL08AU3",
                     PACKAGE_NAME    : "com.brilliant"
-                    // GETUI配置-- debug
-//                    GETUI_APP_ID    : "vjD1woXYBx7WyvHzTTdtr2",
-//                    GETUI_APP_KEY   : "AKnBAZN6GMA4v7ZXUh6xS8",
-//                    GETUI_APP_SECRET: "XYPlbQ84ED9aTWa6rxdeW5",
-//                    PACKAGE_NAME    : "com.brilliant"
             ]
             ndk {
                 abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
@@ -53,10 +44,6 @@ android {
                     APP_ICON        : "@mipmap/ic_launcher",
                     // UMENT配置
                     UMENG_APPKEY    : "562dd44967e58e4437004451",
-                    // GETUI配置-- debug
-                    GETUI_APP_ID    : "vjD1woXYBx7WyvHzTTdtr2",
-                    GETUI_APP_KEY   : "AKnBAZN6GMA4v7ZXUh6xS8",
-                    GETUI_APP_SECRET: "XYPlbQ84ED9aTWa6rxdeW5",
                     PACKAGE_NAME    : "com.brilliant"
             ]
             ndk {
