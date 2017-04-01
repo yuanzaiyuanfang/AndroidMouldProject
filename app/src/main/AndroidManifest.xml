@@ -47,7 +47,22 @@
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 
+
         <!-- ################################## activity end ################################## -->
+        <!-- 新闻测试 -->
+        <activity
+            android:name=".module.mvpmodle.NewsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".module.mvpmodle.news.channel.ChannelActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
+            android:screenOrientation="portrait" />
+
+        <!-- ############################### 测试 activity start ############################# -->
+
+        <!-- ############################### 测试 activity start ############################# -->
 
         <!-- ################################## shareSDK start ################################## -->
 

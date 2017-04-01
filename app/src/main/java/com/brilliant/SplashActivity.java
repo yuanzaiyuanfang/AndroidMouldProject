@@ -72,7 +72,8 @@ public class SplashActivity extends BaseActivity {
                             getString(EBSharedPrefVersion.PREFS_PREVERSION, "0.0.0"))) {
                 UIFactory.startGuideActivity(this, RESULT_OK);
             } else {
-                UIFactory.startHomeActivity(this, RESULT_OK);
+                // UIFactory.startHomeActivity(this, RESULT_OK);
+                UIFactory.startNewsActivity(this, RESULT_OK);
             }
             //===
             finish();

@@ -64,11 +64,11 @@ public class AndroidAPP extends BaseApplication {
         super.onCreate();
         String processName = NativeUtil.getCurProcessName(getApplicationContext());
         if (!StringUtils.isEmpty(processName) && processName.equals(Constants.PACKAGE_NAME)) {
+            //=== 工具类库
+            AndroidUtilsCode.init(getContext()); // AndroidUtilsCode工具类初始化
             //=== 缓存类初始化
             BridgeFactory.init(this);
             BridgeLifeCycleSetKeeper.getInstance().initOnApplicationCreate(this);
-            //===
-            AndroidUtilsCode.init(getContext()); // AndroidUtilsCode工具类初始化
             ebSharedPrefManager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
             //  _initDatabase();
             _initInjector();

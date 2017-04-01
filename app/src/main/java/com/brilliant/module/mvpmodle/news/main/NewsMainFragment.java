@@ -12,6 +12,8 @@ import com.basemodule.base.IRxBusPresenter;
 import com.brilliant.R;
 import com.brilliant.adapter.ViewPagerAdapter;
 import com.brilliant.base.BaseFragment;
+import com.brilliant.injector.components.DaggerNewsMainComponent;
+import com.brilliant.injector.modules.NewsMainModule;
 import com.brilliant.local.table.NewsTypeInfo;
 import com.brilliant.module.mvpmodle.news.channel.ChannelActivity;
 import com.brilliant.module.mvpmodle.news.newslist.NewsListFragment;
@@ -50,11 +52,11 @@ public class NewsMainFragment extends BaseFragment<IRxBusPresenter> implements I
 
     @Override
     protected void initInjector() {
-//        DaggerNewsMainComponent.builder()
-//                .applicationComponent(getAppComponent())
-//                .newsMainModule(new NewsMainModule(this))
-//                .build()
-//                .inject(this);
+        DaggerNewsMainComponent.builder()
+                .applicationComponent(getAppComponent())
+                .newsMainModule(new NewsMainModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override

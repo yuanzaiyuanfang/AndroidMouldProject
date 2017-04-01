@@ -26,7 +26,7 @@ public class NewsActivity extends BaseActivity {
 
     @Override
     protected int attachLayoutRes() {
-        return R.layout.activity_model;
+        return R.layout.activity_news;
     }
 
     @Override
@@ -46,6 +46,10 @@ public class NewsActivity extends BaseActivity {
 
 
     //=================================== 重写自定义方法 end ==================================
+
+    //=================================== 自定义方法 start ==================================
+
+    //=================================== 自定义方法 end ==================================
 
     //=================================== 重写系统方法 start ==================================
 
