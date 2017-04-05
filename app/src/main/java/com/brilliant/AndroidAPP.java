@@ -37,6 +37,8 @@ import org.greenrobot.greendao.database.Database;
 @SuppressWarnings("unused")
 public class AndroidAPP extends BaseApplication {
 
+    //======================================= 自定义变量 start ======================================
+
     private static final String DB_NAME = "news-db";
 
     private static ApplicationComponent sAppComponent;
@@ -49,6 +51,10 @@ public class AndroidAPP extends BaseApplication {
     private RxBus mRxBus = new RxBus();
 
     private RefWatcher refWatcher;
+
+    //======================================= 自定义变量 end ========================================
+
+    //====================================== 重写系统方法 start =====================================
 
     @Override
     public void onCreate() {
@@ -75,6 +81,21 @@ public class AndroidAPP extends BaseApplication {
         }
         refWatcher = LeakCanary.install(this);
     }
+
+    /**
+     * 退出应用，清理内存
+     */
+    private void onDestory() {
+        BridgeLifeCycleSetKeeper.getInstance().clearOnApplicationQuit();
+    }
+
+    //====================================== 重写系统方法 end =======================================
+
+    //======================================= 重写自定义方法 start ==================================
+
+    //====================================== 重写自定义方法 end =====================================
+
+    //====================================== 自定义方法 start =======================================
 
     /**
      * 使用Tinker生成Application，这里改成静态调用
@@ -162,4 +183,7 @@ public class AndroidAPP extends BaseApplication {
                 }).initialize();
         SophixManager.getInstance().queryAndLoadNewPatch();
     }
+
+    //====================================== 自定义方法 end =========================================
+
 }

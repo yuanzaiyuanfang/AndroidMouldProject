@@ -17,10 +17,16 @@ import rx.Subscriber;
  */
 public class SplashActivity extends BaseActivity {
 
+    //======================================= 自定义变量 start ======================================
+
     @BindView(R.id.sb_skip)
     SimpleButton mSbSkip;
 
     private boolean mIsSkip = false;
+
+    //======================================= 自定义变量 end ========================================
+
+    //======================================= 重写自定义方法 start ==================================
 
     @Override
     protected int attachLayoutRes() {
@@ -58,6 +64,10 @@ public class SplashActivity extends BaseActivity {
                 });
     }
 
+    //====================================== 重写自定义方法 end =====================================
+
+    //====================================== 自定义方法 start =======================================
+
     /**
      *
      */
@@ -84,6 +94,10 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
+    //======================================= 自定义方法 end ========================================
+
+    //======================================= 重写系统方法 start ====================================
+
     @OnClick(R.id.sb_skip)
     public void onClick() {
         _doSkip();
@@ -94,4 +108,6 @@ public class SplashActivity extends BaseActivity {
         // 不响应后退键
         return;
     }
+
+    //======================================== 重写系统方法 end =====================================
 }

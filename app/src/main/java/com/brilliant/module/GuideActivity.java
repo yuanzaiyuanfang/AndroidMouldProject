@@ -17,7 +17,13 @@ import rx.Subscriber;
  */
 public class GuideActivity extends BaseActivity {
 
+    //======================================= 自定义变量 start ======================================
+
     private boolean mIsSkip = false;
+
+    //======================================= 自定义变量 end ========================================
+
+    //======================================= 重写自定义方法 start ==================================
 
     @Override
     protected int attachLayoutRes() {
@@ -56,6 +62,10 @@ public class GuideActivity extends BaseActivity {
                 });
     }
 
+    //====================================== 重写自定义方法 end =====================================
+
+    //====================================== 自定义方法 start =======================================
+
     /**
      *
      */
@@ -72,11 +82,6 @@ public class GuideActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        backPressConform();
-    }
-
     /**
      * @Description
      * @author BrillantZhao
@@ -85,4 +90,15 @@ public class GuideActivity extends BaseActivity {
     private void backPressConform() {
         finish();
     }
+
+    //====================================== 自定义方法 end =========================================
+
+    //====================================== 重写系统方法 start =====================================
+
+    @Override
+    public void onBackPressed() {
+        backPressConform();
+    }
+
+    //====================================== 重写系统方法 end =======================================
 }
