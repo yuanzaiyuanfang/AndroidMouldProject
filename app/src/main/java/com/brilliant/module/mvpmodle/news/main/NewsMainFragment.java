@@ -3,7 +3,6 @@ package com.brilliant.module.mvpmodle.news.main;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,7 +14,6 @@ import com.brilliant.base.BaseFragment;
 import com.brilliant.injector.components.DaggerNewsMainComponent;
 import com.brilliant.injector.modules.NewsMainModule;
 import com.brilliant.local.table.NewsTypeInfo;
-import com.brilliant.module.mvpmodle.news.channel.ChannelActivity;
 import com.brilliant.module.mvpmodle.news.newslist.NewsListFragment;
 import com.brilliant.rxbus.event.ChannelEvent;
 
@@ -32,9 +30,6 @@ import rx.functions.Action1;
  * 新闻主界面
  */
 public class NewsMainFragment extends BaseFragment<IRxBusPresenter> implements INewsMainView {
-
-    @BindView(R.id.tool_bar)
-    Toolbar mToolBar;
 
     @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
@@ -61,7 +56,6 @@ public class NewsMainFragment extends BaseFragment<IRxBusPresenter> implements I
 
     @Override
     protected void initViews() {
-        initToolBar(mToolBar, true, "新闻");
         setHasOptionsMenu(true);
         mViewPager.setAdapter(mPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -102,10 +96,10 @@ public class NewsMainFragment extends BaseFragment<IRxBusPresenter> implements I
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.item_channel) {
-            ChannelActivity.launch(mContext);
-            return true;
-        }
+//        if (item.getItemId() == R.id.item_channel) {
+//            ChannelActivity.launch(mContext);
+//            return true;
+//        }
         return false;
     }
 

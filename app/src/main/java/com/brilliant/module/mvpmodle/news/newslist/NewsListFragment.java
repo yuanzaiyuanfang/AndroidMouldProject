@@ -11,6 +11,8 @@ import com.brilliant.R;
 import com.brilliant.adapter.item.NewsMultiItem;
 import com.brilliant.api.bean.NewsInfo;
 import com.brilliant.base.BaseFragment;
+import com.brilliant.injector.components.DaggerNewsListComponent;
+import com.brilliant.injector.modules.NewsListModule;
 import com.brilliant.utils.SliderHelper;
 import com.daimajia.slider.library.SliderLayout;
 import com.dl7.recycler.adapter.BaseQuickAdapter;
@@ -82,11 +84,11 @@ public class NewsListFragment extends BaseFragment<IBasePresenter> implements IN
 
     @Override
     protected void initInjector() {
-//        DaggerNewsListComponent.builder()
-//                .applicationComponent(getAppComponent())
-//                .newsListModule(new NewsListModule(this, mNewsId))
-//                .build()
-//                .inject(this);
+        DaggerNewsListComponent.builder()
+                .applicationComponent(getAppComponent())
+                .newsListModule(new NewsListModule(this, mNewsId))
+                .build()
+                .inject(this);
     }
 
     @Override

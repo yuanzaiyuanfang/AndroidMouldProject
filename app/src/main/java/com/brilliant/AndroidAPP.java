@@ -31,8 +31,6 @@ import com.taobao.android.util.PatchStatus;
 
 import org.greenrobot.greendao.database.Database;
 
-import static com.antfortune.freeline.FreelineCore.getApplication;
-
 /**
  * description:
  * Date: 2017/3/21 16:01
@@ -52,11 +50,9 @@ public class AndroidAPP extends BaseApplication {
     // 因为下载那边需要用，这里在外面实例化在通过 ApplicationModule 设置
     private RxBus mRxBus = new RxBus();
 
-    private static final int REQUEST_EXTERNAL_STORAGE_PERMISSION = 0;
-
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public void registerActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback) {
-        getApplication().registerActivityLifecycleCallbacks(callback);
+        registerActivityLifecycleCallbacks(callback);
     }
 
     @Override
@@ -70,7 +66,7 @@ public class AndroidAPP extends BaseApplication {
             BridgeFactory.init(this);
             BridgeLifeCycleSetKeeper.getInstance().initOnApplicationCreate(this);
             ebSharedPrefManager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
-            //  _initDatabase();
+            _initDatabase();
             _initInjector();
             _initConfig();
         }
@@ -85,6 +81,17 @@ public class AndroidAPP extends BaseApplication {
         return sAppComponent;
     }
 
+
+    /**
+     * 初始化数据库
+     */
+    private void _initDatabase() {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, DB_NAME);
+        Database database = helper.getWritableDb();
+        mDaoSession = new DaoMaster(database).newSession();
+        NewsTypeDao.updateLocalData(getApplicationContext(), mDaoSession);
+    }
+
     /**
      * 初始化注射器
      */
@@ -96,30 +103,20 @@ public class AndroidAPP extends BaseApplication {
     }
 
     /**
-     * 初始化数据库
-     */
-    private void _initDatabase() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getApplication(), DB_NAME);
-        Database database = helper.getWritableDb();
-        mDaoSession = new DaoMaster(database).newSession();
-        NewsTypeDao.updateLocalData(getApplication(), mDaoSession);
-    }
-
-    /**
      * 初始化配置
      */
     private void _initConfig() {
         if (BuildConfig.DEBUG) {
-            // LeakCanary.install(getApplication());
+            // LeakCanary.install(this);
             CrashUtils.getInstance().init();
             LogUtils.getBuilder().setTag("MyTag").setLog2FileSwitch(true).create();
         }
         RetrofitService.init();
-        ToastUtils.init(getApplication());
+        ToastUtils.init(this);
 //        DownloaderWrapper.init(mRxBus, mDaoSession.getVideoInfoDao());
-//        FileDownloader.init(getApplication());
+//        FileDownloader.init(this);
 //        DownloadConfig config = new DownloadConfig.Builder()
-//                .setDownloadDir(PreferencesUtils.getSavePath(getApplication()) + File.separator + "video/").build();
+//                .setDownloadDir(PreferencesUtils.getSavePath(this) + File.separator + "video/").build();
 //        FileDownloader.setConfig(config);
     }
 
