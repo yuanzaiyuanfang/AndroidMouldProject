@@ -2,7 +2,7 @@ package com.brilliant.adapter.item;
 
 import android.support.annotation.IntDef;
 
-import com.brilliant.api.bean.NewsInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsInfo;
 import com.dl7.recycler.entity.MultiItemEntity;
 
 import java.lang.annotation.Retention;

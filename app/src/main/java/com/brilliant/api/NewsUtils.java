@@ -2,7 +2,7 @@ package com.brilliant.api;
 
 import android.support.annotation.NonNull;
 
-import com.brilliant.api.bean.NewsInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsInfo;
 
 
 /**

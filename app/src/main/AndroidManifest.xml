@@ -51,7 +51,7 @@
         <!-- ################################## activity end ################################## -->
         <!-- 新闻测试 -->
         <activity
-            android:name=".module.mvpmodle.NewsActivity"
+            android:name=".module.mvpmodle.news.NewsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 

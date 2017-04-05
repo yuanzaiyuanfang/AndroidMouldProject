@@ -1,4 +1,4 @@
-package com.brilliant.api.bean;
+package com.brilliant.module.mvpmodle.news.bean;
 
 import com.google.gson.annotations.SerializedName;
 

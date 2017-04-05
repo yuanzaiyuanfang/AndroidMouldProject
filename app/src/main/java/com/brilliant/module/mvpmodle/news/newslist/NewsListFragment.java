@@ -9,7 +9,7 @@ import android.view.View;
 import com.basemodule.base.IBasePresenter;
 import com.brilliant.R;
 import com.brilliant.adapter.item.NewsMultiItem;
-import com.brilliant.api.bean.NewsInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsInfo;
 import com.brilliant.base.BaseFragment;
 import com.brilliant.injector.components.DaggerNewsListComponent;
 import com.brilliant.injector.modules.NewsListModule;

@@ -1,11 +1,11 @@
 package com.brilliant.api;
 
 
-import com.brilliant.api.bean.NewsDetailInfo;
-import com.brilliant.api.bean.NewsInfo;
-import com.brilliant.api.bean.PhotoInfo;
-import com.brilliant.api.bean.PhotoSetInfo;
-import com.brilliant.api.bean.SpecialInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsDetailInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsInfo;
+import com.brilliant.module.mvpmodle.news.bean.PhotoInfo;
+import com.brilliant.module.mvpmodle.news.bean.PhotoSetInfo;
+import com.brilliant.module.mvpmodle.news.bean.SpecialInfo;
 
 import java.util.List;
 import java.util.Map;

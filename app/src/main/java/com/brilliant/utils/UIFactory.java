@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.brilliant.module.GuideActivity;
 import com.brilliant.module.HomeActivity;
-import com.brilliant.module.mvpmodle.NewsActivity;
+import com.brilliant.module.mvpmodle.news.NewsActivity;
 
 /**
  * description:

@@ -1,7 +1,7 @@
 package com.brilliant.api;
 
 
-import com.brilliant.api.bean.WelfarePhotoList;
+import com.brilliant.module.mvpmodle.news.bean.WelfarePhotoList;
 
 import retrofit2.http.GET;
 import retrofit2.http.Headers;

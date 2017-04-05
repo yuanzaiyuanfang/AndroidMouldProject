@@ -6,7 +6,7 @@ import com.blankj.utilcode.utils.ToastUtils;
 import com.brilliant.adapter.item.NewsMultiItem;
 import com.brilliant.api.NewsUtils;
 import com.brilliant.api.RetrofitService;
-import com.brilliant.api.bean.NewsInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsInfo;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;

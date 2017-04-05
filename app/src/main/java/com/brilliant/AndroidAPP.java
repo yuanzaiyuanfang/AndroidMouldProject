@@ -17,7 +17,6 @@ import com.brilliant.injector.modules.ApplicationModule;
 import com.brilliant.local.BridgeFactory;
 import com.brilliant.local.BridgeLifeCycleSetKeeper;
 import com.brilliant.local.Bridges;
-import com.brilliant.local.dao.NewsTypeDao;
 import com.brilliant.local.sharePref.EBSharedPrefManager;
 import com.brilliant.local.table.DaoMaster;
 import com.brilliant.local.table.DaoSession;
@@ -89,7 +88,7 @@ public class AndroidAPP extends BaseApplication {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, DB_NAME);
         Database database = helper.getWritableDb();
         mDaoSession = new DaoMaster(database).newSession();
-        NewsTypeDao.updateLocalData(getApplicationContext(), mDaoSession);
+//        NewsTypeDao.updateLocalData(getApplicationContext(), mDaoSession);
     }
 
     /**

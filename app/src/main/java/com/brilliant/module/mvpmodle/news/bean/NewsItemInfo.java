@@ -1,4 +1,4 @@
-package com.brilliant.api.bean;
+package com.brilliant.module.mvpmodle.news.bean;
 
 /**
  * Created by long on 2016/8/26.

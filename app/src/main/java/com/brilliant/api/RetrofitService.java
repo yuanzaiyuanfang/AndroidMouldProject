@@ -5,13 +5,13 @@ import android.text.TextUtils;
 
 import com.blankj.utilcode.utils.NetUtil;
 import com.brilliant.AndroidAPP;
-import com.brilliant.api.bean.NewsDetailInfo;
-import com.brilliant.api.bean.NewsInfo;
-import com.brilliant.api.bean.PhotoInfo;
-import com.brilliant.api.bean.PhotoSetInfo;
-import com.brilliant.api.bean.SpecialInfo;
-import com.brilliant.api.bean.WelfarePhotoInfo;
-import com.brilliant.api.bean.WelfarePhotoList;
+import com.brilliant.module.mvpmodle.news.bean.NewsDetailInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsInfo;
+import com.brilliant.module.mvpmodle.news.bean.PhotoInfo;
+import com.brilliant.module.mvpmodle.news.bean.PhotoSetInfo;
+import com.brilliant.module.mvpmodle.news.bean.SpecialInfo;
+import com.brilliant.module.mvpmodle.news.bean.WelfarePhotoInfo;
+import com.brilliant.module.mvpmodle.news.bean.WelfarePhotoList;
 import com.brilliant.utils.NativeUtil;
 import com.orhanobut.logger.Logger;
 

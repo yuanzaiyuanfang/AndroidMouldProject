@@ -1,4 +1,4 @@
-package com.brilliant.module.mvpmodle;
+package com.brilliant.module.mvpmodle.news;
 
 import android.widget.FrameLayout;
 

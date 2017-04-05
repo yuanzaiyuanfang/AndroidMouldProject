@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import com.brilliant.R;
 import com.brilliant.adapter.item.NewsMultiItem;
 import com.brilliant.api.NewsUtils;
-import com.brilliant.api.bean.NewsInfo;
+import com.brilliant.module.mvpmodle.news.bean.NewsInfo;
 import com.brilliant.utils.DefIconFactory;
 import com.brilliant.utils.ImageLoader;
 import com.brilliant.utils.ListUtils;
