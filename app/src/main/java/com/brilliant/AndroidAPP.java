@@ -1,8 +1,6 @@
 package com.brilliant;
 
-import android.annotation.TargetApi;
-import android.app.Application;
-import android.os.Build;
+import android.content.Context;
 
 import com.basemodule.base.BaseApplication;
 import com.blankj.utilcode.utils.AndroidUtilsCode;
@@ -23,7 +21,8 @@ import com.brilliant.local.table.DaoSession;
 import com.brilliant.rxbus.RxBus;
 import com.brilliant.utils.Constants;
 import com.brilliant.utils.NativeUtil;
-import com.orhanobut.logger.Logger;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.taobao.android.SophixManager;
 import com.taobao.android.listener.PatchLoadStatusListener;
 import com.taobao.android.util.PatchStatus;
@@ -49,10 +48,7 @@ public class AndroidAPP extends BaseApplication {
     // 因为下载那边需要用，这里在外面实例化在通过 ApplicationModule 设置
     private RxBus mRxBus = new RxBus();
 
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    public void registerActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback) {
-        registerActivityLifecycleCallbacks(callback);
-    }
+    private RefWatcher refWatcher;
 
     @Override
     public void onCreate() {
@@ -65,10 +61,19 @@ public class AndroidAPP extends BaseApplication {
             BridgeFactory.init(this);
             BridgeLifeCycleSetKeeper.getInstance().initOnApplicationCreate(this);
             ebSharedPrefManager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
+            //==
             _initDatabase();
             _initInjector();
             _initConfig();
         }
+
+        // 内存泄露检测框架
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        refWatcher = LeakCanary.install(this);
     }
 
     /**
@@ -88,7 +93,6 @@ public class AndroidAPP extends BaseApplication {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, DB_NAME);
         Database database = helper.getWritableDb();
         mDaoSession = new DaoMaster(database).newSession();
-//        NewsTypeDao.updateLocalData(getApplicationContext(), mDaoSession);
     }
 
     /**
@@ -106,17 +110,24 @@ public class AndroidAPP extends BaseApplication {
      */
     private void _initConfig() {
         if (BuildConfig.DEBUG) {
-            // LeakCanary.install(this);
+            // 异常捕捉
             CrashUtils.getInstance().init();
+            // log日志
             LogUtils.getBuilder().setTag("MyTag").setLog2FileSwitch(true).create();
         }
         RetrofitService.init();
         ToastUtils.init(this);
-//        DownloaderWrapper.init(mRxBus, mDaoSession.getVideoInfoDao());
-//        FileDownloader.init(this);
-//        DownloadConfig config = new DownloadConfig.Builder()
-//                .setDownloadDir(PreferencesUtils.getSavePath(this) + File.separator + "video/").build();
-//        FileDownloader.setConfig(config);
+    }
+
+    /**
+     * leakcanary
+     *
+     * @param context
+     * @return
+     */
+    public static RefWatcher getRefWatcher(Context context) {
+        AndroidAPP application = (AndroidAPP) context.getApplicationContext();
+        return application.refWatcher;
     }
 
     /**
@@ -134,18 +145,18 @@ public class AndroidAPP extends BaseApplication {
                         // 补丁加载回调通知
                         if (code == PatchStatus.CODE_LOAD_SUCCESS) {
                             // 表明补丁加载成功
-                            Logger.i("HotFixManager--补丁加载成功");
+                            LogUtils.i("HotFixManager--补丁加载成功");
                         } else if (code == PatchStatus.CODE_LOAD_RELAUNCH) {
                             // 表明新补丁生效需要重启. 开发者可提示用户或者强制重启;
                             // 建议: 用户可以监听进入后台事件, 然后应用自杀
-                            Logger.i("HotFixManager--新补丁生效需要重启. 业务方可自行实现逻辑, 提示用户或者强制重启, 可以监听应用进入后台事件, 然后应用自杀");
+                            LogUtils.i("HotFixManager--新补丁生效需要重启. 业务方可自行实现逻辑, 提示用户或者强制重启, 可以监听应用进入后台事件, 然后应用自杀");
 //                            NativeUtil.restartApp(getApplicationContext());
                         } else if (code == PatchStatus.CODE_LOAD_FAIL) {
                             // 内部引擎异常, 推荐此时清空本地补丁, 防止失败补丁重复加载
                             // SophixManager.getInstance().cleanPatches();
                         } else {
                             // 其它错误信息, 查看PatchStatus类说明
-                            Logger.i("HotFixManager--其它信息");
+                            LogUtils.i("HotFixManager--其它信息");
                         }
                     }
                 }).initialize();

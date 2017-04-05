@@ -20,6 +20,7 @@ import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.injector.components.ApplicationComponent;
 import com.brilliant.injector.modules.ActivityModule;
+import com.squareup.leakcanary.RefWatcher;
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
@@ -46,7 +47,6 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
     @BindView(R.id.empty_layout)
     protected EmptyLayout mEmptyLayout;
     /**
-     *
      * 把 Presenter 提取到基类需要配合基类的 initInjector() 进行注入，如果继承这个基类则必定要提供一个 Presenter 注入方法，
      * 该APP所有 Presenter 都是在 Module 提供注入实现，也可以选择提供另外不带 Presenter 的基类
      */
@@ -266,4 +266,15 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
         //更新资源里面的配置
         return res;
     }
+
+    /**
+     * watch for fragment leaks
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = AndroidAPP.getRefWatcher(mContext);
+        refWatcher.watch(this);
+    }
+
 }

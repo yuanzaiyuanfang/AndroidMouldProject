@@ -17,6 +17,7 @@ import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.injector.components.ApplicationComponent;
 import com.orhanobut.logger.Logger;
+import com.squareup.leakcanary.RefWatcher;
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
@@ -152,7 +153,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
      * @param title
      */
     protected void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, String title) {
-        ((BaseActivity)getActivity()).initToolBar(toolbar, homeAsUpEnabled, title);
+        ((BaseActivity) getActivity()).initToolBar(toolbar, homeAsUpEnabled, title);
     }
 
     /**
@@ -171,7 +172,8 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
 
     /**
      * 绑定布局文件
-     * @return  布局文件ID
+     *
+     * @return 布局文件ID
      */
     protected abstract int attachLayoutRes();
 
@@ -187,8 +189,18 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
 
     /**
      * 更新视图控件
+     *
      * @param isRefresh 新增参数，用来判断是否为下拉刷新调用，下拉刷新的时候不应该再显示加载界面和异常界面
      */
     protected abstract void updateViews(boolean isRefresh);
 
+    /**
+     * watch for fragment leaks
+     */
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        RefWatcher refWatcher = AndroidAPP.getRefWatcher(getActivity());
+        refWatcher.watch(this);
+    }
 }
