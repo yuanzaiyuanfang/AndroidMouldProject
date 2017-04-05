@@ -25,7 +25,9 @@ public class UIFactory {
         activity.startActivityForResult(intent, requestCode);
     }
 
-    /** home页面
+    /**
+     * home页面
+     *
      * @param activity
      * @param requestCode
      */
@@ -34,7 +36,9 @@ public class UIFactory {
         activity.startActivityForResult(intent, requestCode);
     }
 
-    /** 新闻测试页面
+    /**
+     * 新闻测试页面
+     *
      * @param activity
      * @param requestCode
      */
