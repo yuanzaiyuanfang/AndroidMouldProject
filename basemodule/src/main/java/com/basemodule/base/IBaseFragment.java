@@ -55,10 +55,15 @@ import butterknife.ButterKnife;
 //    }
 //}
 public abstract  class IBaseFragment<T extends IBasePresenter, E extends IBaseModel> extends Fragment {
+
     protected View rootView;
+
     public T mPresenter;
+
     public E mModel;
+
     public RxManager mRxManager;
+
     private CustomProgressDialog dialog;
 
     @Nullable
@@ -123,8 +128,6 @@ public abstract  class IBaseFragment<T extends IBasePresenter, E extends IBaseMo
         }
         startActivity(intent);
     }
-
-
 
     /**
      * 开启加载进度条
@@ -203,7 +206,6 @@ public abstract  class IBaseFragment<T extends IBasePresenter, E extends IBaseMo
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
         if (mPresenter != null)
             mPresenter.onDestroy();
         mRxManager.clear();

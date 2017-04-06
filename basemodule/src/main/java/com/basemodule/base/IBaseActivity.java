@@ -2,11 +2,8 @@ package com.basemodule.base;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 
 import com.basemodule.R;
 import com.basemodule.baseapp.AppManager;
@@ -15,6 +12,8 @@ import com.basemodule.utils.TUtil;
 import com.basemodule.utils.ToastUitl;
 import com.basemodule.widget.CustomProgressDialog;
 import com.basemodule.widget.StatusBarCompat;
+import com.trello.rxlifecycle.LifecycleTransformer;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 
@@ -22,10 +21,13 @@ import butterknife.ButterKnife;
  * description:
  * Date: 2017/4/6 10:57
  * User: Administrator
+ * <p>
+ * 基类
  */
 /**
  * 基类
  */
+
 /***************使用例子*********************/
 //1.mvp模式
 //public class SampleActivity extends BaseActivity<NewsChanelPresenter, NewsChannelModel>implements NewsChannelContract.View {
@@ -58,20 +60,26 @@ import butterknife.ButterKnife;
 //    public void initView() {
 //    }
 //}
-public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseModel> extends AppCompatActivity {
+public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseModel> extends RxAppCompatActivity
+implements IBaseView{
+
     public T mPresenter;
+
     public E mModel;
+
     public Context mContext;
+
     public RxManager mRxManager;
+
     private CustomProgressDialog dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ButterKnife.bind(this);
         super.onCreate(savedInstanceState);
         mRxManager = new RxManager();
         doBeforeSetcontentView();
         setContentView(getLayoutId());
-        ButterKnife.bind(this);
         mContext = this;
         mPresenter = TUtil.getT(this, 0);
         mModel = TUtil.getT(this, 1);
@@ -80,6 +88,7 @@ public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseMod
         }
         this.initPresenter();
         this.initView();
+        updateViews(false);
     }
 
     /**
@@ -88,10 +97,6 @@ public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseMod
     private void doBeforeSetcontentView() {
         // 把actvity放到application栈中管理
         AppManager.getAppManager().addActivity(this);
-        // 无标题
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // 设置竖屏
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // 默认着色状态栏
         SetStatusBarColor();
     }
@@ -105,6 +110,11 @@ public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseMod
 
     //初始化view
     public abstract void initView();
+
+    /**
+     * 更新视图控件
+     */
+    protected abstract void updateViews(boolean isRefresh);
 
     /**
      * 着色状态栏（5.0以上系统有效）
@@ -262,7 +272,11 @@ public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseMod
         if (mPresenter != null)
             mPresenter.onDestroy();
         mRxManager.clear();
-        ButterKnife.unbind(this);
         AppManager.getAppManager().finishActivity(this);
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.<T>bindToLifecycle();
     }
 }

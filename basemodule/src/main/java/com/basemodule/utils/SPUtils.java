@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.basemodule.base.BaseApplication;
+import com.basemodule.base.IBaseApplication;
 import com.orhanobut.hawk.Hawk;
 
 
@@ -17,7 +17,7 @@ public class SPUtils {
 
     private static void init(Context context) {
         if (sp == null) {
-            sp = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getAppContext());
+            sp = PreferenceManager.getDefaultSharedPreferences(IBaseApplication.getAppContext());
         }
     }
 

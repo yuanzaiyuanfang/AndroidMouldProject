@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.basemodule.R;
-import com.basemodule.base.BaseApplication;
+import com.basemodule.base.IBaseApplication;
 import com.basemodule.utils.NetWorkUtils;
 import com.basemodule.widget.CustomProgressDialog;
 
@@ -58,11 +58,11 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     }
 
     public RxSubscriber(Context context) {
-        this(context, BaseApplication.getAppContext().getString(R.string.loading), true);
+        this(context, IBaseApplication.getAppContext().getString(R.string.loading), true);
     }
 
     public RxSubscriber(Context context, boolean showDialog) {
-        this(context, BaseApplication.getAppContext().getString(R.string.loading), showDialog);
+        this(context, IBaseApplication.getAppContext().getString(R.string.loading), showDialog);
     }
 
     @Override
@@ -107,8 +107,8 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
             stopProgressDialog();
         e.printStackTrace();
         //网络
-        if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
-            _onError(BaseApplication.getAppContext().getString(R.string.no_net));
+        if (!NetWorkUtils.isNetConnected(IBaseApplication.getAppContext())) {
+            _onError(IBaseApplication.getAppContext().getString(R.string.no_net));
         }
         //服务器
         else if (e instanceof ServerException) {
@@ -120,7 +120,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         }
 //        //其它
 //        else {
-//            _onError(BaseApplication.getAppContext().getString(R.string.net_error));
+//            _onError(IBaseApplication.getAppContext().getString(R.string.net_error));
 //        }
     }
 

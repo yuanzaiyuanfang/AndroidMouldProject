@@ -1,66 +1,64 @@
 package com.brilliant.module;
 
-import com.basemodule.base.IBaseActivity;
 import com.brilliant.AndroidAPP;
 import com.brilliant.R;
+import com.brilliant.base.BaseActivity;
 import com.brilliant.local.sharePref.EBSharedPrefVersion;
+import com.brilliant.utils.RxHelper;
 import com.brilliant.utils.UIFactory;
+import com.orhanobut.logger.Logger;
+
+import rx.Subscriber;
 
 /**
  * description:
  * Date: 2017/2/13 11:10
  * User: Administrator
  */
-public class GuideActivity extends IBaseActivity {
+public class GuideActivity extends BaseActivity {
 
-    //======================================= 自定义变量 start ======================================
+    //#################################################################### 自定义变量 start
 
     private boolean mIsSkip = false;
 
-    //======================================= 自定义变量 end ========================================
+    //#################################################################### 自定义变量 end
 
-    //======================================= 重写自定义方法 start ==================================
+    //#################################################################### 重写自定义方法 start
 
-//    @Override
-//    protected int attachLayoutRes() {
-//        return R.layout.activity_guide;
-//    }
-//
-//    @Override
-//    protected void initInjector() {
-//
-//    }
-//
-//    @Override
-//    protected void initViews() {
-//
-//    }
-//
-//    @Override
-//    protected void updateViews(boolean isRefresh) {
-//        RxHelper.countdown(3)
-//                .compose(this.<Integer>bindToLife())
-//                .subscribe(new Subscriber<Integer>() {
-//                    @Override
-//                    public void onCompleted() {
-//                        _doSkip();
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        Logger.i("onError-->" + e.getMessage());
-//                        _doSkip();
-//                    }
-//
-//                    @Override
-//                    public void onNext(Integer integer) {
-//                    }
-//                });
-//    }
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_guide;
+    }
 
-    //====================================== 重写自定义方法 end =====================================
+    @Override
+    public void initPresenter() {
+    }
 
-    //====================================== 自定义方法 start =======================================
+    @Override
+    public void initView() {
+        RxHelper.countdown(3)
+                .compose(this.<Integer>bindToLife())
+                .subscribe(new Subscriber<Integer>() {
+                    @Override
+                    public void onCompleted() {
+                        _doSkip();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Logger.i("onError-->" + e.getMessage());
+                        _doSkip();
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                    }
+                });
+    }
+
+    //#################################################################### 重写自定义方法 end
+
+    //#################################################################### 自定义方法 start
 
     /**
      *
@@ -87,29 +85,14 @@ public class GuideActivity extends IBaseActivity {
         finish();
     }
 
-    //====================================== 自定义方法 end =========================================
+    //#################################################################### 自定义方法 end
 
-    //====================================== 重写系统方法 start =====================================
+    //#################################################################### 重写系统方法 start
 
     @Override
     public void onBackPressed() {
         backPressConform();
     }
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_guide;
-    }
-
-    @Override
-    public void initPresenter() {
-
-    }
-
-    @Override
-    public void initView() {
-        _doSkip();
-    }
-
-    //====================================== 重写系统方法 end =======================================
+    //#################################################################### 重写系统方法 end
 }

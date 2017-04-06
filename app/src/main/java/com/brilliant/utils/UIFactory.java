@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.brilliant.module.GuideActivity;
 import com.brilliant.module.HomeActivity;
-import com.brilliant.module.mvpmodle.okgo.OkGoTestActivity;
+import com.brilliant.module.mvpmodle.okgotest.view.OkGoTestActivity;
 
 /**
  * description:

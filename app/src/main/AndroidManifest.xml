@@ -50,7 +50,7 @@
         <!-- ################################## activity end ################################## -->
         <!-- 测试 -->
         <activity
-            android:name=".module.mvpmodle.okgo.OkGoTestActivity"
+            android:name=".module.mvpmodle.okgotest.view.OkGoTestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 

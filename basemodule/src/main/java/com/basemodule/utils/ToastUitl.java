@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.basemodule.R;
-import com.basemodule.base.BaseApplication;
+import com.basemodule.base.IBaseApplication;
 
 
 /**
@@ -24,7 +24,7 @@ public class ToastUitl {
 
     private static Toast initToast(CharSequence message, int duration) {
         if (toast == null) {
-            toast = Toast.makeText(BaseApplication.getAppContext(), message, duration);
+            toast = Toast.makeText(IBaseApplication.getAppContext(), message, duration);
         } else {
             toast.setText(message);
             toast.setDuration(duration);
@@ -49,7 +49,7 @@ public class ToastUitl {
      */
     public static void showShort(int strResId) {
 //		Toast.makeText(context, strResId, Toast.LENGTH_SHORT).show();
-        initToast(BaseApplication.getAppContext().getResources().getText(strResId), Toast.LENGTH_SHORT).show();
+        initToast(IBaseApplication.getAppContext().getResources().getText(strResId), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -67,7 +67,7 @@ public class ToastUitl {
      * @param strResId
      */
     public static void showLong(int strResId) {
-        initToast(BaseApplication.getAppContext().getResources().getText(strResId), Toast.LENGTH_LONG).show();
+        initToast(IBaseApplication.getAppContext().getResources().getText(strResId), Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -100,9 +100,9 @@ public class ToastUitl {
      */
     public static Toast showToastWithImg(final String tvStr, final int imageResource) {
         if (toast2 == null) {
-            toast2 = new Toast(BaseApplication.getAppContext());
+            toast2 = new Toast(IBaseApplication.getAppContext());
         }
-        View view = LayoutInflater.from(BaseApplication.getAppContext()).inflate(R.layout.toast_custom, null);
+        View view = LayoutInflater.from(IBaseApplication.getAppContext()).inflate(R.layout.toast_custom, null);
         TextView tv = (TextView) view.findViewById(R.id.toast_custom_tv);
         tv.setText(TextUtils.isEmpty(tvStr) ? "" : tvStr);
         ImageView iv = (ImageView) view.findViewById(R.id.toast_custom_iv);

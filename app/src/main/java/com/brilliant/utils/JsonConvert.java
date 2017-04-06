@@ -3,8 +3,8 @@ package com.brilliant.utils;
 import android.content.Intent;
 
 import com.brilliant.AndroidAPP;
-import com.brilliant.api.Constant;
-import com.brilliant.module.mvpmodle.bean.BaseBean;
+import com.brilliant.api.APIConstant;
+import com.brilliant.base.BaseBean;
 import com.lzy.okgo.convert.Converter;
 
 import java.lang.reflect.ParameterizedType;
@@ -67,8 +67,8 @@ public class JsonConvert<T extends BaseBean> implements Converter<T> {
             response.close();
 
             if (t.getStatus() == 1000 || t.getStatus() == 1001 || t.getStatus() == 1002) {
-                Intent intent = new Intent(Constant.RECEIVER_ERROR_RELOGIN_MAINACTIVITY);
-                intent.putExtra(Constant.NAME_STATUS, t.getStatus());
+                Intent intent = new Intent(APIConstant.RECEIVER_ERROR_RELOGIN_MAINACTIVITY);
+                intent.putExtra(APIConstant.NAME_STATUS, t.getStatus());
                 AndroidAPP.getAppContext().sendBroadcast(intent);
             } else if (t.getStatus() != 1) {
                 throw new IllegalStateException(t.getMessage());
