@@ -57,19 +57,12 @@ public class AndroidAPP extends BaseApplication {
         super.onCreate();
         String processName = NativeUtil.getCurProcessName(getApplicationContext());
         if (!StringUtils.isEmpty(processName) && processName.equals(Constants.PACKAGE_NAME)) {
-            //=== 工具类库
-            AndroidUtilsCode.init(getContext()); // AndroidUtilsCode工具类初始化
-            //=== 缓存类初始化
-            BridgeFactory.init(this);
-            BridgeLifeCycleSetKeeper.getInstance().initOnApplicationCreate(this);
-            ebSharedPrefManager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
-            //===
+            _initConfig();
             _initDatabase();
             _initInjector();
-            _initConfig();
         }
 
-        // 内存泄露检测框架
+        //=== 内存泄露检测框架
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
@@ -131,6 +124,13 @@ public class AndroidAPP extends BaseApplication {
      */
     private void _initConfig() {
         if (BuildConfig.DEBUG) {
+            //=== 工具类库
+            AndroidUtilsCode.init(getContext()); // AndroidUtilsCode工具类初始化
+            //=== 缓存类初始化
+            BridgeFactory.init(this);
+            BridgeLifeCycleSetKeeper.getInstance().initOnApplicationCreate(this);
+            ebSharedPrefManager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
+            //===
             // 异常捕捉
             CrashUtils.getInstance().init();
             // log日志

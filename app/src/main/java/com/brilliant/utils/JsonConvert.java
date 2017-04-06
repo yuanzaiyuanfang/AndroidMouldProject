@@ -2,6 +2,7 @@ package com.brilliant.utils;
 
 import android.content.Intent;
 
+import com.basemodule.utils.JsonUtils;
 import com.brilliant.AndroidAPP;
 import com.brilliant.api.APIConstant;
 import com.brilliant.base.BaseBean;
