@@ -1,26 +1,21 @@
 package com.brilliant;
 
-import com.basemodule.widget.SimpleButton;
-import com.brilliant.base.BaseActivity;
+import com.basemodule.base.IBaseActivity;
 import com.brilliant.local.sharePref.EBSharedPrefVersion;
-import com.brilliant.utils.RxHelper;
 import com.brilliant.utils.UIFactory;
-import com.orhanobut.logger.Logger;
 
-import butterknife.BindView;
 import butterknife.OnClick;
-import rx.Subscriber;
 
 
 /**
  * 启动页面
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends IBaseActivity {
 
     //======================================= 自定义变量 start ======================================
 
-    @BindView(R.id.sb_skip)
-    SimpleButton mSbSkip;
+//    @BindView(R.id.sb_skip)
+//    SimpleButton mSbSkip;
 
     private boolean mIsSkip = false;
 
@@ -28,41 +23,41 @@ public class SplashActivity extends BaseActivity {
 
     //======================================= 重写自定义方法 start ==================================
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_splash;
-    }
-
-    @Override
-    protected void initInjector() {
-    }
-
-    @Override
-    protected void initViews() {
-    }
-
-    @Override
-    protected void updateViews(boolean isRefresh) {
-        RxHelper.countdown(3)
-                .compose(this.<Integer>bindToLife())
-                .subscribe(new Subscriber<Integer>() {
-                    @Override
-                    public void onCompleted() {
-                        _doSkip();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Logger.i("onError-->" + e.getMessage());
-                        _doSkip();
-                    }
-
-                    @Override
-                    public void onNext(Integer integer) {
-                        mSbSkip.setText("跳过 " + integer);
-                    }
-                });
-    }
+//    @Override
+//    protected int attachLayoutRes() {
+//        return R.layout.activity_splash;
+//    }
+//
+//    @Override
+//    protected void initInjector() {
+//    }
+//
+//    @Override
+//    protected void initViews() {
+//    }
+//
+//    @Override
+//    protected void updateViews(boolean isRefresh) {
+//        RxHelper.countdown(3)
+//                .compose(this.<Integer>bindToLife())
+//                .subscribe(new Subscriber<Integer>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        _doSkip();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Logger.i("onError-->" + e.getMessage());
+//                        _doSkip();
+//                    }
+//
+//                    @Override
+//                    public void onNext(Integer integer) {
+//                        mSbSkip.setText("跳过 " + integer);
+//                    }
+//                });
+//    }
 
     //====================================== 重写自定义方法 end =====================================
 
@@ -86,7 +81,7 @@ public class SplashActivity extends BaseActivity {
                 // UIFactory.startHomeActivity(this, RESULT_OK);
 
                 // 代码示例
-                UIFactory.startNewsActivity(this, RESULT_OK);
+                UIFactory.startOkGoTestActivity(this, RESULT_OK);
             }
             //===
             finish();
@@ -107,6 +102,21 @@ public class SplashActivity extends BaseActivity {
     public void onBackPressed() {
         // 不响应后退键
         return;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
+    public void initView() {
+        _doSkip();
     }
 
     //======================================== 重写系统方法 end =====================================

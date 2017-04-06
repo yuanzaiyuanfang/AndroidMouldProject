@@ -198,9 +198,10 @@ dependencies {
     compile('com.taobao.android:alisdk-hotfix:2.0.1') {
         transitive = false
     }
-    // butterknife
-    compile 'com.jakewharton:butterknife:8.5.1'
-    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    //OkGo
+    compile 'com.lzy.net:okgo:+'
+    compile 'com.lzy.net:okrx:+'
+    compile 'com.lzy.net:okserver:+'
     //=== 引用工程
     compile project(':basemodule')
     compile project(':utilcode')

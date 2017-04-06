@@ -1,14 +1,14 @@
 package com.brilliant.module;
 
+import com.basemodule.base.IBaseActivity;
 import com.brilliant.R;
-import com.brilliant.base.BaseActivity;
 
 /**
  * description:
  * Date: 2017/2/13 11:10
  * User: Administrator
  */
-public class ModelActivity extends BaseActivity {
+public class ModelActivity extends IBaseActivity {
 
     //======================================= 自定义变量 start ======================================
 
@@ -16,26 +16,6 @@ public class ModelActivity extends BaseActivity {
     //======================================= 自定义变量 end ========================================
 
     //======================================= 重写自定义方法 start ==================================
-
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_model;
-    }
-
-    @Override
-    protected void initInjector() {
-
-    }
-
-    @Override
-    protected void initViews() {
-
-    }
-
-    @Override
-    protected void updateViews(boolean isRefresh) {
-
-    }
 
     //====================================== 重写自定义方法 end =====================================
 
@@ -57,6 +37,21 @@ public class ModelActivity extends BaseActivity {
      */
     private void backPressConform() {
         finish();
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_model;
+    }
+
+    @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
+    public void initView() {
+
     }
 
     //====================================== 重写系统方法 end =======================================

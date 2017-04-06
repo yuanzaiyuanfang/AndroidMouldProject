@@ -47,16 +47,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 
-
         <!-- ################################## activity end ################################## -->
-        <!-- 新闻测试 -->
+        <!-- 测试 -->
         <activity
-            android:name=".module.mvpmodle.news.NewsActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".module.mvpmodle.news.channel.ChannelActivity"
+            android:name=".module.mvpmodle.okgo.OkGoTestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 

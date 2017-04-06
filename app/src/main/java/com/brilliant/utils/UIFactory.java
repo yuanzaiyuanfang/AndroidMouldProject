@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.brilliant.module.GuideActivity;
 import com.brilliant.module.HomeActivity;
-import com.brilliant.module.mvpmodle.news.NewsActivity;
+import com.brilliant.module.mvpmodle.okgo.OkGoTestActivity;
 
 /**
  * description:
@@ -37,13 +37,13 @@ public class UIFactory {
     }
 
     /**
-     * 新闻测试页面
+     * OKGO测试页面
      *
      * @param activity
      * @param requestCode
      */
-    public static void startNewsActivity(Activity activity, int requestCode) {
-        Intent intent = new Intent(activity, NewsActivity.class);
+    public static void startOkGoTestActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, OkGoTestActivity.class);
         activity.startActivityForResult(intent, requestCode);
     }
 }
