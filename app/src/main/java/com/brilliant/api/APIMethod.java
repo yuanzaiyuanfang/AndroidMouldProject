@@ -3,11 +3,9 @@ package com.brilliant.api;
 import android.content.Context;
 
 import com.basemodule.baserx.RxSchedulers;
+import com.basemodule.okgo.OkGoRequest;
+import com.basemodule.okgo.callback.JsonConvert;
 import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
-import com.brilliant.utils.JsonConvert;
-import com.google.gson.Gson;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.request.PostRequest;
 import com.lzy.okrx.RxAdapter;
 
 import java.util.HashMap;
@@ -19,19 +17,19 @@ import rx.Subscriber;
  * Created by conan on 2017/2/18.
  */
 
-public class API {
+public class APIMethod {
 
-    public static volatile API api;
+    public static volatile APIMethod api;
 
-    private API() {
+    private APIMethod() {
     }
 
     /**
      * @return
      */
-    public static API getInstance() {
+    public static APIMethod getInstance() {
         if (api == null) {
-            api = new API();
+            api = new APIMethod();
         }
         return api;
     }
@@ -44,31 +42,6 @@ public class API {
                 throw new IllegalStateException(errorMsg);
             }
         }).compose(RxSchedulers.<String>io_main());
-    }
-
-    /**
-     * 普通Post，直接上传Json类型的文本
-     * <p>
-     * 该方法与postString没有本质区别，只是数据格式是json,一般来说，需要自己创建一个实体bean或者一个map，
-     * 把需要的参数设置进去，然后通过三方的Gson或者fastjson转换成json字符串，最后直接使用该方法提交到服务器。
-     * 默认会携带以下请求头，请不要手动修改，okgo也不支持自己修改
-     * Content-Type: application/json;charset=utf-8
-     *
-     * @param context
-     * @param url
-     * @param params
-     * @return
-     */
-    private PostRequest getPostRequest(Context context, String url, HashMap<String, Object> params) {
-        //=== 参数设置
-        HashMap<String, Object> map = addBaseParams(new HashMap<String, Object>());
-        map.put(APIConstant.SESSION_TOKEN_PARAM, "token");
-        map.put(APIConstant.PARAM, params);
-        //===
-        return OkGo.post(url)
-                .tag(context)//以对应activity或fragment作为网络请求tag，以便即时取消网络请求
-                //	.params("param1", "paramValue1")//  这里不要使用params，upJson 与 params 是互斥的，只有 upJson 的数据会被上传
-                .upJson(new Gson().toJson(map));
     }
 
     /**
@@ -89,14 +62,29 @@ public class API {
         return params;
     }
 
+    /**
+     *
+     * @param params
+     * @return
+     */
+    public HashMap<String, Object> getPublicParams(HashMap<String, Object> params) {
+        //=== 公共部分设置
+        HashMap<String, Object> map = addBaseParams(new HashMap<String, Object>());
+        map.put(APIConstant.SESSION_TOKEN_PARAM, "token");
+        map.put(APIConstant.PARAM, params);
+        //===
+        return map;
+    }
+
     //#################################################################### 具体页面接口
 
     // 闪页 获取广告信息
     public Observable<QueryAdvertBean> queryAdvert(Context context) {
         //=== 参数设置
         HashMap<String, Object> params = new HashMap<>();
+
         //===
-        return getPostRequest(context, APIConstant.QUERYADVERT, params).getCall(new JsonConvert<QueryAdvertBean>() {
+        return OkGoRequest.getPostJsonRequest(context, APIConstant.QUERYADVERT, getPublicParams(params)).getCall(new JsonConvert<QueryAdvertBean>() {
         }, RxAdapter.<QueryAdvertBean>create());
     }
 }

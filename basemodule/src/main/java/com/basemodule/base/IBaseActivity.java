@@ -23,6 +23,8 @@ import butterknife.ButterKnife;
  * User: Administrator
  * <p>
  * 基类
+ * <p>
+ * 基类
  */
 /**
  * 基类
@@ -61,7 +63,7 @@ import butterknife.ButterKnife;
 //    }
 //}
 public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseModel> extends RxAppCompatActivity
-implements IBaseView{
+        implements IBaseView {
 
     public T mPresenter;
 

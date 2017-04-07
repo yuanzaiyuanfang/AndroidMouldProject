@@ -1,11 +1,10 @@
-package com.brilliant.utils;
+package com.basemodule.okgo.callback;
 
-import android.content.Intent;
-
-import com.basemodule.utils.JsonUtils;
-import com.brilliant.AndroidAPP;
-import com.brilliant.api.APIConstant;
-import com.brilliant.base.BaseBean;
+import com.basemodule.base.IBaseApplication;
+import com.basemodule.okgo.model.LzyResponse;
+import com.basemodule.okgo.model.SimpleResponse;
+import com.basemodule.okgo.utils.Convert;
+import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.convert.Converter;
 
 import java.lang.reflect.ParameterizedType;
@@ -13,7 +12,23 @@ import java.lang.reflect.Type;
 
 import okhttp3.Response;
 
-public class JsonConvert<T extends BaseBean> implements Converter<T> {
+/**
+ * ================================================
+ * 作    者：jeasonlzy（廖子尧）Github地址：https://github.com/jeasonlzy
+ * 版    本：1.0
+ * 创建日期：16/9/11
+ * 描    述：
+ * -
+ * -
+ * -
+ * -该类主要用于 OkRx 调用，直接解析泛型，返回数据对象，若不用okrx，可以删掉该类
+ * -
+ * -
+ * -
+ * 修订历史：
+ * ================================================
+ */
+public class JsonConvert<T> implements Converter<T> {
 
     /**
      * 该方法是子线程处理，不能做ui相关的工作
@@ -51,37 +66,45 @@ public class JsonConvert<T extends BaseBean> implements Converter<T> {
         // 这里这么写的原因是，我们需要保证上面我解析到的type泛型，仍然还具有一层参数化的泛型，也就是两层泛型
         // 如果你不喜欢这么写，不喜欢传递两层泛型，那么以下两行代码不用写，并且javabean按照
         // https://github.com/jeasonlzy/okhttp-OkGo/blob/master/README_JSONCALLBACK.md 这里的第一种方式定义就可以实现
-//        if (!(type instanceof ParameterizedType)) throw new IllegalStateException("没有填写泛型参数");
+        if (!(type instanceof ParameterizedType)) throw new IllegalStateException("没有填写泛型参数");
         //如果确实还有泛型，那么我们需要取出真实的泛型，得到如下结果
         //class com.lzy.demo.model.LzyResponse
         //此时，rawType的类型实际上是 class，但 Class 实现了 Type 接口，所以我们用 Type 接收没有问题
-//        Type rawType = ((ParameterizedType) type).getRawType();
+        Type rawType = ((ParameterizedType) type).getRawType();
         //这里获取最终内部泛型的类型 com.lzy.demo.model.ServerModel
-//        Type typeArgument = ((ParameterizedType) type).getActualTypeArguments()[0];
+        Type typeArgument = ((ParameterizedType) type).getActualTypeArguments()[0];
 
         //这里我们既然都已经拿到了泛型的真实类型，即对应的 class ，那么当然可以开始解析数据了，我们采用 Gson 解析
         //以下代码是根据泛型解析数据，返回对象，返回的对象自动以参数的形式传递到 onSuccess 中，可以直接使用
-
-        T t;
-        try {
-            t = (T) JsonUtils.fromJson(response.body().string(), type);
+        JsonReader jsonReader = new JsonReader(response.body().charStream());
+        if (typeArgument == Void.class) {
+            //无数据类型,表示没有data数据的情况（以  new DialogCallback<LzyResponse<Void>>(this)  以这种形式传递的泛型)
+            SimpleResponse simpleResponse = Convert.fromJson(jsonReader, SimpleResponse.class);
             response.close();
-
-            if (t.getStatus() == 1000 || t.getStatus() == 1001 || t.getStatus() == 1002) {
-                Intent intent = new Intent(APIConstant.RECEIVER_ERROR_RELOGIN_MAINACTIVITY);
-                intent.putExtra(APIConstant.NAME_STATUS, t.getStatus());
-                AndroidAPP.getAppContext().sendBroadcast(intent);
-            } else if (t.getStatus() != 1) {
-                throw new IllegalStateException(t.getMessage());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            //noinspection unchecked
+            return (T) simpleResponse.toLzyResponse();
+        } else if (rawType == LzyResponse.class) {
+            //有数据类型，表示有data
+            LzyResponse lzyResponse = Convert.fromJson(jsonReader, type);
             response.close();
-            if (e instanceof IllegalStateException) {
-                throw new IllegalStateException(e.getMessage());
+            String code = lzyResponse.code + "";
+            //这里的0是以下意思
+            //一般来说服务器会和客户端约定一个数表示成功，其余的表示失败，这里根据实际情况修改
+            if (code.equals(IBaseApplication.getRespSuccessCode())) {
+                //noinspection unchecked
+                return (T) lzyResponse;
+            } else if (code.equals(IBaseApplication.getRespNotLogin())) {
+                //比如：用户尚未登录，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
+                throw new IllegalStateException("用户尚未登录");
+            } else if (code.equals(IBaseApplication.getRespLoginOtherDevice())) {
+                //比如：用户账号在其他设别上登录，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
+                throw new IllegalStateException("用户账号在其他设别上登录");
+            } else {
+                throw new IllegalStateException("错误代码：" + code + "，错误信息：" + lzyResponse.msg);
             }
-            throw new RuntimeException();
+        } else {
+            response.close();
+            throw new IllegalStateException("基类错误无法解析!");
         }
-        return t;
     }
 }

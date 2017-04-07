@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.basemodule.baserx.RxSchedulers;
 import com.basemodule.utils.SPUtils;
-import com.brilliant.api.API;
+import com.brilliant.api.APIMethod;
 import com.brilliant.api.APIConstant;
 import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
 import com.brilliant.module.mvpmodle.okgotest.contact.SplashAContract;
@@ -20,8 +20,8 @@ import rx.functions.Func1;
 /****************
  * 使用例子
  ****************/
-//  API.getInstance().errorObservable("失败");
-//  API.getInstance().demoMethod(mContext, params...).flatMap(Func...).map(Func...).compose(RxSchedulers.<Object>io_main());
+//  APIMethod.getInstance().errorObservable("失败");
+//  APIMethod.getInstance().demoMethod(mContext, params...).flatMap(Func...).map(Func...).compose(RxSchedulers.<Object>io_main());
 
 public class SplashAModel implements SplashAContract.Model {
 
@@ -54,7 +54,7 @@ public class SplashAModel implements SplashAContract.Model {
 
     @Override
     public Observable<QueryAdvertBean.DataBean> queryAdvert() {
-        return API.getInstance().queryAdvert(mContext)
+        return APIMethod.getInstance().queryAdvert(mContext)
                 .map(new Func1<QueryAdvertBean, QueryAdvertBean.DataBean>() {
                     @Override
                     public QueryAdvertBean.DataBean call(QueryAdvertBean queryAdvertBean) {

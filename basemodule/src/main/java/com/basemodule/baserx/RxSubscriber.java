@@ -58,11 +58,11 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     }
 
     public RxSubscriber(Context context) {
-        this(context, IBaseApplication.getAppContext().getString(R.string.loading), true);
+        this(context, IBaseApplication.getAppInstance().getString(R.string.loading), true);
     }
 
     public RxSubscriber(Context context, boolean showDialog) {
-        this(context, IBaseApplication.getAppContext().getString(R.string.loading), showDialog);
+        this(context, IBaseApplication.getAppInstance().getString(R.string.loading), showDialog);
     }
 
     @Override
@@ -107,8 +107,8 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
             stopProgressDialog();
         e.printStackTrace();
         //网络
-        if (!NetWorkUtils.isNetConnected(IBaseApplication.getAppContext())) {
-            _onError(IBaseApplication.getAppContext().getString(R.string.no_net));
+        if (!NetWorkUtils.isNetConnected(IBaseApplication.getAppInstance())) {
+            _onError(IBaseApplication.getAppInstance().getString(R.string.no_net));
         }
         //服务器
         else if (e instanceof ServerException) {

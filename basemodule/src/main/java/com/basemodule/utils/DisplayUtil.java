@@ -32,7 +32,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int px2dip(float pxValue) {
-		final float scale = IBaseApplication.getAppContext().getResources().getDisplayMetrics().density;
+		final float scale = IBaseApplication.getAppInstance().getResources().getDisplayMetrics().density;
 		return (int) (pxValue / scale + 0.5f);
 	}
 
@@ -44,7 +44,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int dip2px( float dipValue) {
-		final float scale = IBaseApplication.getAppContext().getResources().getDisplayMetrics().density;
+		final float scale = IBaseApplication.getAppInstance().getResources().getDisplayMetrics().density;
 		return (int) (dipValue * scale + 0.5f);
 	}
 
@@ -56,7 +56,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int px2sp(float pxValue) {
-		final float fontScale = IBaseApplication.getAppContext().getResources().getDisplayMetrics().scaledDensity;
+		final float fontScale = IBaseApplication.getAppInstance().getResources().getDisplayMetrics().scaledDensity;
 		return (int) (pxValue / fontScale + 0.5f);
 	}
 
@@ -68,7 +68,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int sp2px(float spValue) {
-		final float fontScale = IBaseApplication.getAppContext().getResources().getDisplayMetrics().scaledDensity;
+		final float fontScale = IBaseApplication.getAppInstance().getResources().getDisplayMetrics().scaledDensity;
 		return (int) (spValue * fontScale + 0.5f);
 	}
 

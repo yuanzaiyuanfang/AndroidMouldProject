@@ -3,13 +3,10 @@ package com.brilliant;
 import com.basemodule.widget.SimpleButton;
 import com.brilliant.base.BaseActivity;
 import com.brilliant.local.sharePref.EBSharedPrefVersion;
-import com.brilliant.utils.RxHelper;
 import com.brilliant.utils.UIFactory;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import rx.Subscriber;
 
 
 /**
@@ -39,25 +36,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        RxHelper.countdown(3)
-                .compose(this.<Integer>bindToLife())
-                .subscribe(new Subscriber<Integer>() {
-                    @Override
-                    public void onCompleted() {
-                        _doSkip();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Logger.i("onError-->" + e.getMessage());
-                        _doSkip();
-                    }
-
-                    @Override
-                    public void onNext(Integer integer) {
-                        mSbSkip.setText("跳过 " + integer);
-                    }
-                });
+        _doSkip();
     }
 
     //#################################################################### 重写自定义方法 end

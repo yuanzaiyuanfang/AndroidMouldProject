@@ -8,6 +8,7 @@ import com.blankj.utilcode.utils.LogUtils;
 import com.blankj.utilcode.utils.StringUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.brilliant.base.BaseApplication;
+import com.brilliant.constant.APPConstant;
 import com.brilliant.injector.components.ApplicationComponent;
 import com.brilliant.injector.components.DaggerApplicationComponent;
 import com.brilliant.injector.modules.ApplicationModule;
@@ -87,7 +88,7 @@ public class AndroidAPP extends BaseApplication {
     //#################################################################### 自定义方法 start
 
     public static AndroidAPP getInstance() {
-        return (AndroidAPP) getAppContext();
+        return (AndroidAPP) getAppInstance();
     }
 
     /**
@@ -124,6 +125,11 @@ public class AndroidAPP extends BaseApplication {
      */
     private void _initConfig() {
         if (BuildConfig.DEBUG) {
+            //=== okgo
+            initOkGo(APPConstant.RESP_SUCCESS_CODE, APPConstant.RESP_NOT_LOGIN, APPConstant.RESP_LOGIN_OTHER_DEVICE,
+                    null, null);
+            //=== ali httpdns
+            initHttpDns(APPConstant.ALI_HTTPDNS_ACCOUND_ID);
             //=== 工具类库
             AndroidUtilsCode.init(getContext()); // AndroidUtilsCode工具类初始化
             //=== 缓存类初始化

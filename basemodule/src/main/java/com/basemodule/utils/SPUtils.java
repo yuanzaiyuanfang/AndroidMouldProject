@@ -17,7 +17,7 @@ public class SPUtils {
 
     private static void init(Context context) {
         if (sp == null) {
-            sp = PreferenceManager.getDefaultSharedPreferences(IBaseApplication.getAppContext());
+            sp = PreferenceManager.getDefaultSharedPreferences(IBaseApplication.getAppInstance());
         }
     }
 

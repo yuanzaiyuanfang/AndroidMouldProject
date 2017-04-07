@@ -30,6 +30,10 @@ allprojects {
         maven {
             url "http://repo.baichuan-android.taobao.com/content/groups/BaichuanRepositories"
         }
+        // ali httpdns
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
     }
 }
 
