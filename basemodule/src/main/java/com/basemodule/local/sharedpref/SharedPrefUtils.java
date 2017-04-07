@@ -1,6 +1,5 @@
 package com.basemodule.local.sharedpref;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -17,136 +16,124 @@ public class SharedPrefUtils {
 
     /**
      * 初始化
-     *
-     * @param context
      */
-    private static void init(Context context) {
+    private static void init() {
         if (sp == null) {
             sp = PreferenceManager.getDefaultSharedPreferences(IBaseApplication.getAppInstance());
         }
     }
 
     /**
-     * @param context
      * @param key
      * @param value
      */
-    public static void setSharedIntData(Context context, String key, int value) {
+    public static void setSharedIntData(String key, int value) {
         if (sp == null) {
-            init(context);
+            init();
         }
         sp.edit().putInt(key, value).commit();
     }
 
     /**
-     * @param context
      * @param key
      * @param defValue
      * @return
      */
-    public static int getSharedIntData(Context context, String key, int defValue) {
+    public static int getSharedIntData(String key, int defValue) {
         if (sp == null) {
-            init(context);
+            init();
         }
         return sp.getInt(key, defValue);
     }
 
     /**
-     * @param context
      * @param key
      * @param value
      */
-    public static void setSharedlongData(Context context, String key, long value) {
+    public static void setSharedlongData(String key, long value) {
         if (sp == null) {
-            init(context);
+            init();
         }
         sp.edit().putLong(key, value).commit();
     }
 
     /**
-     * @param context
      * @param key
      * @param defValue
      * @return
      */
-    public static long getSharedlongData(Context context, String key, long defValue) {
+    public static long getSharedlongData(String key, long defValue) {
         if (sp == null) {
-            init(context);
+            init();
         }
         return sp.getLong(key, defValue);
     }
 
     /**
-     * @param context
      * @param key
      * @param value
      */
-    public static void setSharedFloatData(Context context, String key, float value) {
+    public static void setSharedFloatData(String key, float value) {
         if (sp == null) {
-            init(context);
+            init();
         }
         sp.edit().putFloat(key, value).commit();
     }
 
     /**
-     * @param context
      * @param key
      * @param defValue
      * @return
      */
-    public static Float getSharedFloatData(Context context, String key, Float defValue) {
+    public static Float getSharedFloatData(String key, Float defValue) {
         if (sp == null) {
-            init(context);
+            init();
         }
         return sp.getFloat(key, defValue);
     }
 
     /**
-     * @param context
      * @param key
      * @param value
      */
-    public static void setSharedBooleanData(Context context, String key, boolean value) {
+    public static void setSharedBooleanData(String key, boolean value) {
         if (sp == null) {
-            init(context);
+            init();
         }
         sp.edit().putBoolean(key, value).commit();
     }
 
     /**
-     * @param context
      * @param key
      * @param defValue
      * @return
      */
-    public static Boolean getSharedBooleanData(Context context, String key, boolean defValue) {
+    public static Boolean getSharedBooleanData(String key, boolean defValue) {
         if (sp == null) {
-            init(context);
+            init();
         }
         return sp.getBoolean(key, defValue);
     }
 
     /**
-     * @param context
      * @param key
      * @param value
      */
-    public static void setSharedStringData(Context context, String key, String value) {
+    public static void setSharedStringData(String key, String value) {
         if (sp == null) {
-            init(context);
+            init();
         }
         sp.edit().putString(key, value).commit();
     }
 
     /**
-     * @param context
      * @param key
      * @param defValue
      * @return
      */
-    public static String getSharedStringData(Context context, String key, String defValue) {
+    public static String getSharedStringData(String key, String defValue) {
         if (sp == null) {
-            init(context);
+            init();
         }
         return sp.getString(key, defValue);
     }

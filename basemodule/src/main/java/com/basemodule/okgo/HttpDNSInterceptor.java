@@ -1,6 +1,5 @@
 package com.basemodule.okgo;
 
-import com.basemodule.base.IBaseApplication;
 import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
@@ -24,7 +23,8 @@ public class HttpDNSInterceptor implements Interceptor {
         // 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置
         String newUrl = url;
         try {
-            String ip = IBaseApplication.getHttpdns().getIpByHostAsync(host);
+            // String ip = IBaseApplication.getHttpdns().getIpByHostAsync(host);
+            String ip = null;
             if (ip != null) {
                 newUrl = url.replaceFirst(host, ip);
                 Logger.d("Get IP: " + ip + " for host: " + host + " from HTTPDNS successfully!");

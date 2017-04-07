@@ -1,2 +1,1 @@
-include ':app', ':basemodule', ':utilcode'
-project(':utilcode').projectDir = new File('AndroidUtilCode/utilcode')
+include ':app', ':basemodule'

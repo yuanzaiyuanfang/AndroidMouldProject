@@ -17,6 +17,9 @@ public class APPConstant {
     //=== ali httpdns Account ID
     public static final String ALI_HTTPDNS_ACCOUND_ID = "";
 
+    //=== sharedPreference 存储 key
+    public static final String PREFS_PREVERSION = "PREFS_PREVERSION";  // 版本号信息
+
     //=== other
     public static final String PACKAGE_NAME = "com.brilliant";  // 应用包名
 
@@ -59,5 +62,7 @@ public class APPConstant {
      * http请求
      */
     public static final String HTTP = "com.focustech.electronicbrand.HTTP";
+
+
 
 }

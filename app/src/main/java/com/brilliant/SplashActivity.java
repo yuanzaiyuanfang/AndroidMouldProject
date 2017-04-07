@@ -1,7 +1,9 @@
 package com.brilliant;
 
+import com.basemodule.local.sharedpref.SharedPrefUtils;
 import com.basemodule.widget.SimpleButton;
 import com.brilliant.base.BaseActivity;
+import com.brilliant.constant.APPConstant;
 import com.brilliant.constant.UIFactory;
 import com.orhanobut.logger.Logger;
 
@@ -38,7 +40,7 @@ public class SplashActivity extends BaseActivity {
     public void initView() {
         _doSkip();
         Logger.i("hello world ");
-        Logger.i("SplashActivity","HELLO ");
+        Logger.i("HELLO ");
     }
 
     //#################################################################### 重写自定义方法 end
@@ -54,9 +56,7 @@ public class SplashActivity extends BaseActivity {
             //跳转到MainActivity，并结束当前的LauncherActivity
             //=== 和本次的软件版本号作对比，用来判断软件是否进行了更新，从而决定是否展示引导页
             if (AndroidAPP.getPackageInfo() != null && !AndroidAPP.getPackageInfo().versionName.equals(
-                    AndroidAPP.ebSharedPrefManager.
-                            getKDPreferenceUserInfo().
-                            getString(EBSharedPrefVersion.PREFS_PREVERSION, "0.0.0"))) {
+                    SharedPrefUtils.getSharedStringData(APPConstant.PREFS_PREVERSION, "0.0.0"))) {
                 UIFactory.startGuideActivity(this, RESULT_OK);
             } else {
                 // 正常的页面流程

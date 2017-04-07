@@ -2,7 +2,7 @@ package com.brilliant.module;
 
 import android.os.SystemClock;
 
-import com.blankj.utilcode.utils.ToastUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
 
@@ -29,7 +29,7 @@ public class HomeActivity extends BaseActivity {
             finish();
         } else {
             mBackPressedTime = curTime;
-            ToastUtils.showToast(R.string.app_exit_confirm);
+            ToastUtils.showShortToast(R.string.app_exit_confirm);
         }
         finish();
     }

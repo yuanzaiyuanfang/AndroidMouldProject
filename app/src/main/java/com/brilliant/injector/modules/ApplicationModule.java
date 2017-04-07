@@ -3,7 +3,6 @@ package com.brilliant.injector.modules;
 import android.content.Context;
 
 import com.brilliant.AndroidAPP;
-import com.brilliant.local.table.DaoSession;
 import com.brilliant.rxbus.RxBus;
 
 import javax.inject.Singleton;
@@ -19,12 +18,10 @@ import dagger.Provides;
 public class ApplicationModule {
 
     private final AndroidAPP mApplication;
-    private final DaoSession mDaoSession;
     private final RxBus mRxBus;
 
-    public ApplicationModule(AndroidAPP application, DaoSession daoSession, RxBus rxBus) {
+    public ApplicationModule(AndroidAPP application,  RxBus rxBus) {
         mApplication = application;
-        mDaoSession = daoSession;
         mRxBus = rxBus;
     }
 
@@ -38,11 +35,5 @@ public class ApplicationModule {
     @Singleton
     RxBus provideRxBus() {
         return mRxBus;
-    }
-
-    @Provides
-    @Singleton
-    DaoSession provideDaoSession() {
-        return mDaoSession;
     }
 }

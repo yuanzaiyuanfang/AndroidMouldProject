@@ -13,6 +13,8 @@ import com.alibaba.sdk.android.httpdns.HttpDns;
 import com.alibaba.sdk.android.httpdns.HttpDnsService;
 import com.basemodule.okgo.HttpDNSInterceptor;
 import com.basemodule.utils.NativeUtil;
+import com.blankj.utilcode.util.CrashUtils;
+import com.blankj.utilcode.util.Utils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -79,6 +81,9 @@ public class IBaseApplication extends MultiDexApplication {
         super.onCreate();
         appInstance = this;
         setContext(getApplicationContext());
+        //=== init AndroidUtilCode
+        Utils.init(this);
+        CrashUtils.getInstance().init();  // 异常捕捉
         //=== 安装包信息
         setPackageInfo(NativeUtil.getPackageInfo(getContext()));
         //=== init Hawk

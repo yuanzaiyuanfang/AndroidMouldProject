@@ -1,8 +1,10 @@
 package com.brilliant.module;
 
+import com.basemodule.local.sharedpref.SharedPrefUtils;
 import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
+import com.brilliant.constant.APPConstant;
 import com.brilliant.constant.UIFactory;
 
 /**
@@ -45,8 +47,7 @@ public class GuideActivity extends BaseActivity {
         if (!mIsSkip) {
             mIsSkip = true;
             //在sp中记录访问过引导页的状态
-            AndroidAPP.ebSharedPrefManager.getKDPreferenceUserInfo().saveString(EBSharedPrefVersion.PREFS_PREVERSION,
-                    AndroidAPP.getPackageInfo().versionName);
+            SharedPrefUtils.setSharedStringData(APPConstant.PREFS_PREVERSION, AndroidAPP.getPackageInfo().versionName);
             UIFactory.startHomeActivity(this, RESULT_OK);
             //===
             finish();
