@@ -65,6 +65,8 @@ import butterknife.ButterKnife;
 public abstract class IBaseActivity<T extends IBasePresenter, E extends IBaseModel> extends RxAppCompatActivity
         implements IBaseView {
 
+    public final String TAG = this.getClass().getSimpleName();
+
     public T mPresenter;
 
     public E mModel;

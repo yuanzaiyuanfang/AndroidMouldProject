@@ -3,6 +3,8 @@ package com.basemodule.baserx;
 import android.support.annotation.NonNull;
 
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -20,6 +22,7 @@ import rx.subjects.Subject;
  * on 2016.08.14:50
  */
 public class RxBus {
+
     private static RxBus instance;
 
     public static synchronized RxBus getInstance() {
@@ -67,7 +70,7 @@ public class RxBus {
         }
         Subject<T, T> subject;
         subjectList.add(subject = PublishSubject.create());
-//        LogUtils.logd("register"+tag + "  size:" + subjectList.size());
+        Logger.d("register" + tag + "  size:" + subjectList.size());
         return subject;
     }
 
@@ -96,7 +99,7 @@ public class RxBus {
             subjects.remove((Subject<?, ?>) observable);
             if (isEmpty(subjects)) {
                 subjectMapper.remove(tag);
-//                LogUtils.logd("unregister"+ tag + "  size:" + subjects.size());
+                Logger.d("unregister" + tag + "  size:" + subjects.size());
             }
         }
         return getInstance();
@@ -113,12 +116,12 @@ public class RxBus {
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void post(@NonNull Object tag, @NonNull Object content) {
-//        LogUtils.logd("post"+ "eventName: " + tag);
+        Logger.d("post" + "eventName: " + tag);
         List<Subject> subjectList = subjectMapper.get(tag);
         if (!isEmpty(subjectList)) {
             for (Subject subject : subjectList) {
                 subject.onNext(content);
-//                LogUtils.logd("onEvent"+ "eventName: " + tag);
+                Logger.d("onEvent" + "eventName: " + tag);
             }
         }
     }
@@ -127,5 +130,4 @@ public class RxBus {
     public static boolean isEmpty(Collection<Subject> collection) {
         return null == collection || collection.isEmpty();
     }
-
 }

@@ -21,6 +21,7 @@ import com.basemodule.R;
  *******************************************************************/
 
 public class CustomProgressDialog extends Dialog {
+
 	private Context context = null;
 	private static CustomProgressDialog customProgressDialog = null;
 	

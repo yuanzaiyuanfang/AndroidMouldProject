@@ -14,13 +14,10 @@ import com.brilliant.injector.components.DaggerApplicationComponent;
 import com.brilliant.injector.modules.ApplicationModule;
 import com.brilliant.local.BridgeFactory;
 import com.brilliant.local.BridgeLifeCycleSetKeeper;
-import com.brilliant.local.Bridges;
-import com.brilliant.local.sharePref.EBSharedPrefManager;
 import com.brilliant.local.table.DaoMaster;
 import com.brilliant.local.table.DaoSession;
 import com.brilliant.rxbus.RxBus;
-import com.brilliant.utils.Constants;
-import com.brilliant.utils.NativeUtil;
+import com.brilliant.constant.APPMethod;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -56,8 +53,8 @@ public class AndroidAPP extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        String processName = NativeUtil.getCurProcessName(getApplicationContext());
-        if (!StringUtils.isEmpty(processName) && processName.equals(Constants.PACKAGE_NAME)) {
+        String processName = APPMethod.getCurProcessName(getApplicationContext());
+        if (!StringUtils.isEmpty(processName) && processName.equals(APPConstant.PACKAGE_NAME)) {
             _initConfig();
             _initDatabase();
             _initInjector();
@@ -135,7 +132,7 @@ public class AndroidAPP extends BaseApplication {
             //=== 缓存类初始化
             BridgeFactory.init(this);
             BridgeLifeCycleSetKeeper.getInstance().initOnApplicationCreate(this);
-            ebSharedPrefManager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
+            ebSharedPrefManager = BridgeFactory.getBridge(APPConstant.SHARED_PREFERENCE);
             //===
             // 异常捕捉
             CrashUtils.getInstance().init();

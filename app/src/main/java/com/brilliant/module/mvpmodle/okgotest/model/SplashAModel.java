@@ -3,7 +3,7 @@ package com.brilliant.module.mvpmodle.okgotest.model;
 import android.content.Context;
 
 import com.basemodule.baserx.RxSchedulers;
-import com.basemodule.utils.SPUtils;
+import com.basemodule.local.sharedpref.SharedPrefUtils;
 import com.brilliant.api.APIMethod;
 import com.brilliant.api.APIConstant;
 import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
@@ -61,7 +61,7 @@ public class SplashAModel implements SplashAContract.Model {
 
                         QueryAdvertBean.DataBean bean_new = queryAdvertBean.getData();
 
-                        QueryAdvertBean.DataBean bean_old = SPUtils.getSharedObject(APIConstant.KEY_SPLASH_ADVERTISEMENT, null);
+                        QueryAdvertBean.DataBean bean_old = SharedPrefUtils.getSharedObject(APIConstant.KEY_SPLASH_ADVERTISEMENT, null);
 
                         if (bean_old == null || !bean_old.getKey().equals(bean_new.getKey())) {
 
@@ -79,7 +79,7 @@ public class SplashAModel implements SplashAContract.Model {
 
                         }
 
-                        SPUtils.setSharedObject(APIConstant.KEY_SPLASH_ADVERTISEMENT, bean_new);
+                        SharedPrefUtils.setSharedObject(APIConstant.KEY_SPLASH_ADVERTISEMENT, bean_new);
 
                         return bean_new;
                     }

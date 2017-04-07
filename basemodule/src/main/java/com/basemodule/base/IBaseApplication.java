@@ -47,6 +47,8 @@ public class IBaseApplication extends MultiDexApplication {
 
     //#################################################################### 自定义变量 start
 
+    public final String TAG = this.getClass().getSimpleName();
+
     private static Context _context;
 
     private static IBaseApplication appInstance;

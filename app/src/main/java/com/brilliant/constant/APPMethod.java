@@ -1,4 +1,4 @@
-package com.brilliant.utils;
+package com.brilliant.constant;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -9,11 +9,12 @@ import android.text.TextUtils;
 import com.brilliant.SplashActivity;
 
 /**
+ * 该文件中都是与应用相关的本地方法，所有与app无关的公共方法都应该抽出来放到utilcode中
  * description:
  * Date: 2017/3/22 11:21
  * User: Administrator
  */
-public class NativeUtil {
+public class APPMethod {
 
     /**
      * 裁剪图集ID

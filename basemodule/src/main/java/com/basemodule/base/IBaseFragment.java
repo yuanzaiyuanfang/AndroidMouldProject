@@ -56,6 +56,8 @@ import butterknife.ButterKnife;
 //}
 public abstract  class IBaseFragment<T extends IBasePresenter, E extends IBaseModel> extends Fragment {
 
+    public final String TAG = this.getClass().getSimpleName();
+
     protected View rootView;
 
     public T mPresenter;

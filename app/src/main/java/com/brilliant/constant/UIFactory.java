@@ -1,4 +1,4 @@
-package com.brilliant.utils;
+package com.brilliant.constant;
 
 import android.app.Activity;
 import android.content.Intent;

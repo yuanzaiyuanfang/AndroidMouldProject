@@ -19,7 +19,7 @@ public class HttpDNSInterceptor implements Interceptor {
 
         String url = httpUrl.toString();
         String host = httpUrl.host();
-        Logger.i("originalUrl:" + url);
+        Logger.d("originalUrl:" + url);
 
         // 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置
         String newUrl = url;
@@ -27,7 +27,7 @@ public class HttpDNSInterceptor implements Interceptor {
             String ip = IBaseApplication.getHttpdns().getIpByHostAsync(host);
             if (ip != null) {
                 newUrl = url.replaceFirst(host, ip);
-                Logger.i("Get IP: " + ip + " for host: " + host + " from HTTPDNS successfully!");
+                Logger.d("Get IP: " + ip + " for host: " + host + " from HTTPDNS successfully!");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class HttpDNSInterceptor implements Interceptor {
         builder.header("Host", host);
 
         Request newRequest = builder.build();
-        Logger.i("newUrl:" + newRequest.url());
+        Logger.d("newUrl:" + newRequest.url());
         Response newResponse = chain.proceed(newRequest);
         return newResponse;
     }

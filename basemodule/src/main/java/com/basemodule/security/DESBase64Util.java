@@ -21,7 +21,6 @@ public class DESBase64Util {
     /**
      * 密码长度必须是8的倍数
      */
-//    public final static String KEY = "RS12569812456328";
     public final static String KEY = "RS125698";
  
     /**

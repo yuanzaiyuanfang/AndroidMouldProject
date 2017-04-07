@@ -2,8 +2,8 @@ package com.brilliant;
 
 import com.basemodule.widget.SimpleButton;
 import com.brilliant.base.BaseActivity;
-import com.brilliant.local.sharePref.EBSharedPrefVersion;
-import com.brilliant.utils.UIFactory;
+import com.brilliant.constant.UIFactory;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -37,6 +37,8 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initView() {
         _doSkip();
+        Logger.i("hello world ");
+        Logger.i("SplashActivity","HELLO ");
     }
 
     //#################################################################### 重写自定义方法 end

@@ -8,7 +8,9 @@ import java.io.Serializable;
  * on 2016.09.9:47
  */
 public class BaseRespose<T> implements Serializable {
+
     public String code;
+
     public String msg;
 
     public T data;

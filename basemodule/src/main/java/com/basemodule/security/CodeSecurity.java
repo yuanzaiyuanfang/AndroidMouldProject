@@ -11,7 +11,6 @@ public class CodeSecurity {
         return DESBase64Util.encodeInfo(str);
     }
 
-
     public static final String desDecodeInfo(String str){
         return DESBase64Util.decodeInfo(str);
     }
@@ -46,10 +45,20 @@ public class CodeSecurity {
         return result;
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     public static final String myEncode(String str){
         return aesEncode(str);
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     public static final String myDecode(String str){
         return aesDecodeInfo(str);
     }

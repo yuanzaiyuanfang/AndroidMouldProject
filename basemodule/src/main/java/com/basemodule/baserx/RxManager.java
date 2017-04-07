@@ -15,18 +15,22 @@ import rx.subscriptions.CompositeSubscription;
  * on 2016.08.14:50
  */
 public class RxManager {
+
     public RxBus mRxBus = RxBus.getInstance();
+
     //管理rxbus订阅
     private Map<String, Observable<?>> mObservables = new HashMap<>();
+
     /*管理Observables 和 Subscribers订阅*/
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     /**
      * RxBus注入监听
+     *
      * @param eventName
      * @param action1
      */
-    public <T>void on(String eventName, Action1<T> action1) {
+    public <T> void on(String eventName, Action1<T> action1) {
         Observable<T> mObservable = mRxBus.register(eventName);
         mObservables.put(eventName, mObservable);
         /*订阅管理*/
@@ -41,12 +45,14 @@ public class RxManager {
 
     /**
      * 单纯的Observables 和 Subscribers管理
+     *
      * @param m
      */
     public void add(Subscription m) {
         /*订阅管理*/
         mCompositeSubscription.add(m);
     }
+
     /**
      * 单个presenter生命周期结束，取消订阅和所有rxbus观察
      */
@@ -56,6 +62,7 @@ public class RxManager {
             mRxBus.unregister(entry.getKey(), entry.getValue());// 移除rxbus观察
         }
     }
+
     //发送rxbus
     public void post(Object tag, Object content) {
         mRxBus.post(tag, content);

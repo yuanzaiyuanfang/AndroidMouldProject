@@ -1,11 +1,15 @@
 package com.brilliant.demo;
 
+import com.brilliant.R;
+import com.brilliant.base.BaseFragment;
+
 /**
+ * fragment模板，所有新建的fragment都应该复制该文件然后自定义
  * description:
  * Date: 2017/2/13 11:10
  * User: Administrator
  */
-public class ModelFragment {
+public class ModelFragment extends BaseFragment {
 
     //#################################################################### 自定义变量 start
 
@@ -14,6 +18,20 @@ public class ModelFragment {
 
     //#################################################################### 重写自定义方法 start
 
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_model;
+    }
+
+    @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
 
     //#################################################################### 重写自定义方法 end
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.brilliant.utils;
+package com.basemodule.utils;
 
 import android.os.Build;
 import android.os.Environment;

@@ -1,12 +1,12 @@
 package com.basemodule.baserx;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.basemodule.R;
 import com.basemodule.base.IBaseApplication;
 import com.basemodule.utils.NetWorkUtils;
 import com.basemodule.widget.CustomProgressDialog;
+import com.orhanobut.logger.Logger;
 
 import rx.Subscriber;
 
@@ -36,8 +36,11 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     private static final String TAG = "RxSubscriber_ONERROR";
 
     private Context mContext;
+
     private String msg;
+
     private boolean showDialog = true;
+
     private CustomProgressDialog dialog;
 
     /**
@@ -101,7 +104,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     public void onError(Throwable e) {
         _onAfter();
 
-        Log.i(TAG, "onError: " + e.getMessage());
+        Logger.d(TAG, "onError: " + e.getMessage());
 
         if (showDialog)
             stopProgressDialog();

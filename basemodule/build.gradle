@@ -78,7 +78,6 @@ dependencies {
     //fire.im自动更新
     compile 'com.umeng.analytics:analytics:latest.integration'
     //友盟统计
-    compile 'com.orhanobut:hawk:2.0.1'
     // 基于SharedPreferences存储，可直接存储对象
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     //图片缩放
@@ -102,4 +101,8 @@ dependencies {
 
     //=== ali httpdns
     compile 'com.aliyun.ams:alicloud-android-httpdns:1.0.10'
+
+    //=== hawk (https://github.com/orhanobut/hawk)
+    compile 'com.orhanobut:hawk:2.0.1'
+
 }

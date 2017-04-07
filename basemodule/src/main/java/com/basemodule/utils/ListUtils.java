@@ -1,4 +1,4 @@
-package com.brilliant.utils;
+package com.basemodule.utils;
 
 import android.text.TextUtils;
 

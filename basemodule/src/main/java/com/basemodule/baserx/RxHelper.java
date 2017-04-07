@@ -2,6 +2,7 @@ package com.basemodule.baserx;
 
 
 import com.basemodule.baseapp.BaseRespose;
+import com.orhanobut.logger.Logger;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -22,6 +23,7 @@ import rx.schedulers.Schedulers;
         .//省略*/
 
 public class RxHelper {
+
     /**
      * 对服务器返回数据进行预处理
      *
@@ -35,7 +37,7 @@ public class RxHelper {
                 return tObservable.flatMap(new Func1<BaseRespose<T>, Observable<T>>() {
                     @Override
                     public Observable<T> call(BaseRespose<T> result) {
-//                        LogUtils.logd("result from api : " + result);
+                        Logger.d("result from api : " + result);
                         if (result.success()) {
                             return createData(result.data);
                         } else {
@@ -45,7 +47,6 @@ public class RxHelper {
                 }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
             }
         };
-
     }
 
     /**

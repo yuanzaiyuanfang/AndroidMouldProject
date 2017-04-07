@@ -10,6 +10,12 @@ import rx.schedulers.Schedulers;
  * on 2016.08.14:50
  */
 public class RxSchedulers {
+
+    /**
+     *
+     * @param <T>
+     * @return
+     */
     public static <T> Observable.Transformer<T, T> io_main() {
         return new Observable.Transformer<T, T>() {
             @Override

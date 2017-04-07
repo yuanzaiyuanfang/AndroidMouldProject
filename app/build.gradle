@@ -152,8 +152,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    // greendao
-    compile 'org.greenrobot:greendao:3.1.0'
     // circleimageview
     compile 'de.hdodenhof:circleimageview:2.1.0'
     // slider
@@ -193,6 +191,10 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.23'
     // jsoup
     compile 'com.github.jhy:jsoup:jsoup-1.10.2'
+
+    //=== greendao  (https://github.com/greenrobot/greenDAO)
+    compile 'org.greenrobot:greendao:3.2.2' // add library
+
     //=== 引用工程
     compile project(':basemodule')
     compile project(':utilcode')

@@ -3,12 +3,11 @@ package com.brilliant.demo;
 import android.content.Context;
 
 /**
+ * MVP中Model 模板
  * Created by Conan on 2017/2/23.
  */
 
-/****************
- * 使用例子
- ****************/
+//使用例子
 //  API.getInstance().errorObservable("失败");
 //  API.getInstance().demoMethod(mContext, params...).flatMap(Func...).map(Func...).compose(RxSchedulers.<Object>io_main());
 

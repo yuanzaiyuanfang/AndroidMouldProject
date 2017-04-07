@@ -6,6 +6,7 @@ import com.brilliant.base.BasePresenter;
 import com.brilliant.base.BaseView;
 
 /**
+ * MVP中Contract 模板
  * Created by Conan on 2017/2/23.
  */
 public interface DemoContract {

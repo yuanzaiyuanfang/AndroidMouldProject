@@ -3,8 +3,7 @@ package com.brilliant.module;
 import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
-import com.brilliant.local.sharePref.EBSharedPrefVersion;
-import com.brilliant.utils.UIFactory;
+import com.brilliant.constant.UIFactory;
 
 /**
  * description:

@@ -49,8 +49,6 @@ public class JsonConvert<T> implements Converter<T> {
     public T convertSuccess(Response response) throws Exception {
 
         // 重要的事情说三遍，不同的业务，这里的代码逻辑都不一样，如果你不修改，那么基本不可用
-        // 重要的事情说三遍，不同的业务，这里的代码逻辑都不一样，如果你不修改，那么基本不可用
-        // 重要的事情说三遍，不同的业务，这里的代码逻辑都不一样，如果你不修改，那么基本不可用
 
         //以下代码是通过泛型解析实际参数,泛型必须传
         //这里为了方便理解，假如请求的代码按照上述注释文档中的请求来写，那么下面分别得到是
