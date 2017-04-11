@@ -5,7 +5,7 @@
 ## Screenshot
 
 ##### 项目结构：
-
+![Alt text](https://github.com/yuanzaiyuanfang/AndroidMouldProject/images/xiangmujiegou.png)
 ##### 应用截图：
 
 这里有截图
