@@ -6,15 +6,11 @@
 
 ##### 项目结构：
 
-![](https://raw.githubusercontent.com/Rukey7/ScreenShot/master/MvpApp/project.png)
-
 ##### 应用截图：
 
 
 ##### 使用方法：
-1) 
 
-2) dfgfd
 
 ## 用到的第三方库
 
