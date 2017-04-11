@@ -23,6 +23,32 @@
 <img src="https://raw.githubusercontent.com/Rukey7/ScreenShot/master/MvpApp/%E5%9B%BE%E7%89%87%E5%8A%A8%E5%9B%BE.gif" height = "400" alt="图片动图" align=center />
 <img src="https://raw.githubusercontent.com/Rukey7/ScreenShot/master/MvpApp/%E4%B8%8B%E8%BD%BD%E5%8A%A8%E5%9B%BE.gif" height = "400" alt="下载管理" align=center />
 
+##### 使用方法：
+Add Library module as a dependency in your build.gradle file.
+
+or
+
+```xml
+Step 1. Add the JitPack repository to your build file 
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+Step 2. Add the dependency
+
+    dependencies {
+	        compile 'com.github.BrillantZhao:AndroidMouldProject:1.0.0'
+	    }
+```
+
+
+
 ## 用到的第三方库
 
 - [leakcanary](https://github.com/square/leakcanary)
