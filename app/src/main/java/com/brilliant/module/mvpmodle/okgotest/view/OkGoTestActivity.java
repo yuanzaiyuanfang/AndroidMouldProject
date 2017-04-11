@@ -64,9 +64,7 @@ public class OkGoTestActivity extends BaseActivity<SplashAPresenter, SplashAMode
 
     @Override
     public void initView() {
-
         SetTranslanteBar();
-
         //===
         mPresenter.queryAdvert();        //异步获取广告信息
     }
