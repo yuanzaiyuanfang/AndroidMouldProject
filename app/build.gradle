@@ -4,12 +4,12 @@ apply plugin: 'org.greenrobot.greendao'  // greenDAO
 apply plugin: 'com.antfortune.freeline'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.brilliant"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 19
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -129,11 +129,11 @@ dependencies {
     })
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     testCompile 'junit:junit:4.12'
-    compile "com.android.support:appcompat-v7:${rootProject.ext.support}"
-    compile "com.android.support:recyclerview-v7:${rootProject.ext.support}"
-    compile "com.android.support:cardview-v7:${rootProject.ext.support}"
-    compile "com.android.support:support-v4:${rootProject.ext.support}"
-    compile "com.android.support:design:${rootProject.ext.support}"
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:recyclerview-v7:25.3.0'
+    compile 'com.android.support:cardview-v7:25.3.0'
+    compile 'com.android.support:support-v4:25.3.0'
+    compile 'com.android.support:design:25.3.0'
     //=== 第三方引用
     // leakcanary
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
@@ -189,16 +189,9 @@ dependencies {
     //    compile 'com.zhy:changeskin:4.0.2'
     // jsoup
     compile 'com.github.jhy:jsoup:jsoup-1.10.2'
-
     //=== greendao  (https://github.com/greenrobot/greenDAO)
-    compile 'org.greenrobot:greendao:3.2.2' // add library
-
+    compile 'org.greenrobot:greendao:3.2.2'
     //=== AndroidFilePicker  (https://github.com/BrillantZhao/AndroidFilePicker)
     compile 'com.github.BrillantZhao:AndroidFilePicker:1.0.2'
-
-    //=== 引用工程
     compile project(':basemodule')
 }
-
-// 使用统一的配置
-apply from: 'config.gradle'

@@ -7,8 +7,6 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.brilliant.base.BaseApplication;
 import com.brilliant.constant.APPConstant;
 import com.brilliant.constant.APPMethod;
-import com.brilliant.injector.components.ApplicationComponent;
-import com.brilliant.rxbus.RxBus;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -21,11 +19,6 @@ import com.squareup.leakcanary.RefWatcher;
 public class AndroidAPP extends BaseApplication {
 
     //#################################################################### 自定义变量 start
-
-    private static ApplicationComponent sAppComponent;
-
-    // 因为下载那边需要用，这里在外面实例化在通过 ApplicationModule 设置
-    private RxBus mRxBus = new RxBus();
 
     private RefWatcher refWatcher;
 
@@ -61,16 +54,6 @@ public class AndroidAPP extends BaseApplication {
     public static AndroidAPP getInstance() {
         return (AndroidAPP) getAppInstance();
     }
-
-    /**
-     * 使用Tinker生成Application，这里改成静态调用
-     *
-     * @return
-     */
-    public static ApplicationComponent getAppComponent() {
-        return sAppComponent;
-    }
-
 
     /**
      * 初始化配置
