@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.basemodule.baserx.RxSchedulers;
 import com.basemodule.okgo.OkGoRequest;
-import com.basemodule.okgo.callback.JsonConvert;
 import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
 import com.lzy.okrx.RxAdapter;
 

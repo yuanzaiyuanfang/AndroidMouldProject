@@ -67,8 +67,7 @@ public class AndroidAPP extends BaseApplication {
     private void _initConfig() {
         if (BuildConfig.DEBUG) {
             //=== okgo
-            initOkGo(APPConstant.RESP_SUCCESS_CODE, APPConstant.RESP_NOT_LOGIN, APPConstant.RESP_LOGIN_OTHER_DEVICE,
-                    null, null);
+            initOkGo(null, null);
             //=== ali httpdns
             initHttpDns(APPConstant.ALI_HTTPDNS_ACCOUND_ID, hostList);
         }
