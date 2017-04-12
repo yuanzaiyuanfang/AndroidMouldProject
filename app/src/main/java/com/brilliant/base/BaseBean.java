@@ -1,6 +1,5 @@
 package com.brilliant.base;
 
-import com.basemodule.base.IBaseBean;
 
 /**add your personal code here
  * Created by Conan on 2016/12/22.
