@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.basemodule.utils.ImageLoaderUtils;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
 import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
@@ -24,7 +23,7 @@ import butterknife.OnClick;
  * Date: 2017/4/6 10:50
  * User: Administrator
  */
-public class OkGoTestActivity extends BaseActivity<SplashAPresenter, SplashAModel> implements SplashAContract.View{
+public class OkGoTestActivity extends BaseActivity<SplashAPresenter, SplashAModel> implements SplashAContract.View {
 
     private static final String TAG = "OkGoTestActivity";
 
@@ -100,13 +99,7 @@ public class OkGoTestActivity extends BaseActivity<SplashAPresenter, SplashAMode
     //获取到广告信息
     @Override
     public void returnQueryAdvert(QueryAdvertBean.DataBean bean) {
-        if (bean.getLeftShowNum() >= 0) {
-            hasAdv = true;
-            ImageLoaderUtils.displayBigPhotoWithoutPlaceHolder(this, ivAdv, bean.getImgUrl());
-            advUrl = bean.getLinkUrl();
-        } else {
-            hasAdv = false;
-        }
+
     }
 
     //所有逻辑处理结束，跳转主页

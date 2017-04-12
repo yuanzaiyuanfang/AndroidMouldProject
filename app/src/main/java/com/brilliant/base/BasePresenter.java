@@ -4,7 +4,7 @@ import com.basemodule.base.IBaseModel;
 import com.basemodule.base.IBasePresenter;
 import com.basemodule.base.IBaseView;
 
-/**
+/**add your personal code here
  * description:
  * Date: 2017/4/6 16:39
  * User: Administrator

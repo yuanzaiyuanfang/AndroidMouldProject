@@ -84,7 +84,7 @@ public class APIMethod {
         HashMap<String, Object> params = new HashMap<>();
 
         //===
-        return OkGoRequest.getPostJsonRequest(context, APIConstant.QUERYADVERT, getPublicParams(params)).getCall(new JsonConvert<QueryAdvertBean>() {
+        return OkGoRequest.postJsonRequest(context, APIConstant.QUERYADVERT, getPublicParams(params)).getCall(new JsonConvert<QueryAdvertBean>() {
         }, RxAdapter.<QueryAdvertBean>create());
     }
 }

@@ -10,6 +10,9 @@ import com.brilliant.constant.APPMethod;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * description:
  * Date: 2017/3/21 16:01
@@ -21,6 +24,9 @@ public class AndroidAPP extends BaseApplication {
     //#################################################################### 自定义变量 start
 
     private RefWatcher refWatcher;
+
+    // httpdns预解析域名
+    private ArrayList hostList = new ArrayList<>(Arrays.asList("www.aliyun.com", "www.taobao.com"));
 
     //#################################################################### 自定义变量 end
 
@@ -64,7 +70,7 @@ public class AndroidAPP extends BaseApplication {
             initOkGo(APPConstant.RESP_SUCCESS_CODE, APPConstant.RESP_NOT_LOGIN, APPConstant.RESP_LOGIN_OTHER_DEVICE,
                     null, null);
             //=== ali httpdns
-            initHttpDns(APPConstant.ALI_HTTPDNS_ACCOUND_ID);
+            initHttpDns(APPConstant.ALI_HTTPDNS_ACCOUND_ID, hostList);
         }
         ToastUtils.init(true);
     }
