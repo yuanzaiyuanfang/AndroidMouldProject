@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.basemodule.baserx.RxSchedulers;
 import com.basemodule.local.sharedpref.SharedPrefUtils;
-import com.brilliant.api.APIMethod;
 import com.brilliant.api.APIConstant;
+import com.brilliant.api.APIMethod;
 import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
 import com.brilliant.module.mvpmodle.okgotest.contact.SplashAContract;
 

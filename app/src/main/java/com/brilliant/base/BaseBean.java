@@ -1,32 +1,12 @@
 package com.brilliant.base;
 
-/**
+import com.basemodule.base.IBaseBean;
+
+/**add your personal code here
  * Created by Conan on 2016/12/22.
  */
 
-public class BaseBean {
-    /**
-     * status : 1
-     * message : 成功
-     */
+public class BaseBean extends IBaseBean {
 
-    private int status;
-    private String message;
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
 }

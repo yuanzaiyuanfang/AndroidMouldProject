@@ -5,6 +5,7 @@ import android.content.Context;
 import com.basemodule.base.IBaseApplication;
 
 /**
+ * add your personal code here
  * description:
  * Date: 2017/4/6 16:56
  * User: Administrator
