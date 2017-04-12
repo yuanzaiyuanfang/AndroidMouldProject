@@ -154,6 +154,7 @@ dependencies {
     //=== RxPermissions(https://github.com/tbruyelle/RxPermissions)
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar'
 
+
     //=== dagger(https://github.com/google/dagger)
     apt 'com.google.dagger:dagger-compiler:2.6'
     compile 'com.google.dagger:dagger:2.6'

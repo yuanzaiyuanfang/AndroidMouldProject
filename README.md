@@ -5,12 +5,14 @@
 ## Screenshot
 
 ##### 项目结构：
-
+![Alt text](https://github.com/yuanzaiyuanfang/AndroidMouldProject/raw/master/images/xiangmujiegou.png)
 ##### 应用截图：
 
 这里有截图
 ##### 使用方法：
-这里有说明
+- demo中有mvp模板，直接复制改个名字就可以用了
+- module提供使用参考
+- 第三方库的使用详见下方链接
 
 ## 用到的第三方库
 
