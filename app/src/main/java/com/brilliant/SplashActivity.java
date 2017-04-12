@@ -7,6 +7,8 @@ import com.brilliant.constant.APPConstant;
 import com.brilliant.constant.UIFactory;
 import com.orhanobut.logger.Logger;
 
+import java.lang.reflect.Type;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
