@@ -24,6 +24,15 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 
 /**
@@ -213,7 +222,20 @@ public class DownloadService extends Service {
 
         try {
             URL url = new URL(downloadUrl);
-            httpConnection = (HttpURLConnection) url.openConnection();
+
+            //=== 关键代码 解决https证书问题
+            //ignore https certificate validation |忽略 https 证书验证
+            if (url.getProtocol().toUpperCase().equals("HTTPS")) {
+                trustAllHosts();
+                HttpsURLConnection https = (HttpsURLConnection) url
+                        .openConnection();
+                https.setHostnameVerifier(DO_NOT_VERIFY);
+                httpConnection = https;
+            } else {
+                httpConnection = (HttpURLConnection) url.openConnection();
+            }
+
+            //===
             httpConnection
                     .setRequestProperty("User-Agent", "PacificHttpClient");
             if (currentSize > 0) {
@@ -313,4 +335,39 @@ public class DownloadService extends Service {
             DownloadService.this.callback = callback;
         }
     }
+
+    public static void trustAllHosts() {
+        // Create a trust manager that does not validate certificate chains
+        // Android use X509 cert
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return new java.security.cert.X509Certificate[]{};
+            }
+
+            public void checkClientTrusted(X509Certificate[] chain,
+                                           String authType) throws CertificateException {
+            }
+
+            public void checkServerTrusted(X509Certificate[] chain,
+                                           String authType) throws CertificateException {
+            }
+        }};
+
+        // Install the all-trusting trust manager
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            HttpsURLConnection
+                    .setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public final static HostnameVerifier DO_NOT_VERIFY = new HostnameVerifier() {
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
+    };
 }
