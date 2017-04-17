@@ -7,6 +7,7 @@ import com.brilliant.constant.APPConstant;
 import com.brilliant.constant.UIFactory;
 import com.orhanobut.logger.Logger;
 
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -60,10 +61,10 @@ public class SplashActivity extends BaseActivity {
                 UIFactory.startGuideActivity(this, RESULT_OK);
             } else {
                 // 正常的页面流程
-                 UIFactory.startHomeActivity(this, RESULT_OK);
+                // UIFactory.startHomeActivity(this, RESULT_OK);
 
                 // 代码示例
-//                UIFactory.startOkGoTestActivity(this, RESULT_OK);
+                UIFactory.startOkGoTestActivity(this, RESULT_OK);
             }
             //===
             finish();

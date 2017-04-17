@@ -49,16 +49,7 @@ public abstract class BaseActivity<T extends IBasePresenter, E extends IBaseMode
         }
     }
 
-    @Override
-    public void showLoading(String notice) {
-        if (!isFinishing()) {
-            try {
-                showProgressDialog(notice);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
 
     @Override
     public void hideLoading() {

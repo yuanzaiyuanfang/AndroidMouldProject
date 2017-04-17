@@ -22,6 +22,7 @@ public abstract class BaseFragment<T extends IBasePresenter, E extends IBaseMode
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         presentationLayerFuncHelper = new PresentationLayerFuncHelper(getActivity());
         return super.rootView;
     }

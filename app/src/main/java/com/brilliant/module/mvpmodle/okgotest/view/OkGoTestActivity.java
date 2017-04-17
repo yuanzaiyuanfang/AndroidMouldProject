@@ -68,6 +68,11 @@ public class OkGoTestActivity extends BaseActivity<SplashAPresenter, SplashAMode
         mPresenter.queryAdvert();        //异步获取广告信息
     }
 
+    @Override
+    protected void updateViews(boolean b) {
+
+    }
+
     @OnClick({R.id.tv_skip, R.id.tv_enteradv})
     public void onClick(View view) {
         switch (view.getId()) {

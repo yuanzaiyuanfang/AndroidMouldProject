@@ -67,5 +67,10 @@ public class HomeActivity extends BaseActivity {
         downloadUpdateAPK(download_url);
     }
 
+    @Override
+    protected void updateViews(boolean b) {
+
+    }
+
     //#################################################################### 重写系统方法 end
 }
