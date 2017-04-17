@@ -25,12 +25,10 @@ public class ModelActivity extends BaseActivity {
 
     @Override
     public void initPresenter() {
-
     }
 
     @Override
     public void initView() {
-
     }
 
     //#################################################################### 重写自定义方法 end

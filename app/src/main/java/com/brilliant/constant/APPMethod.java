@@ -3,10 +3,14 @@ package com.brilliant.constant;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.text.TextUtils;
 
 import com.brilliant.SplashActivity;
+
+import java.io.File;
 
 /**
  * 该文件中都是与应用相关的本地方法，所有与app无关的公共方法都应该抽出来放到utilcode中
@@ -72,6 +76,23 @@ public class APPMethod {
     }
 
     /**
+     * 安装app
+     *
+     * @param context
+     * @param file
+     */
+    public static void installAPK(Context context, File file) {
+        if (file == null || !file.exists())
+            return;
+        Intent intent = new Intent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file),
+                "application/vnd.android.package-archive");
+        context.startActivity(intent);
+    }
+
+    /**
      * 重新启动app
      *
      * @param context
@@ -91,5 +112,29 @@ public class APPMethod {
      */
     public static boolean isNullOrZeroLenght(String str) {
         return (null == str || "".equals(str.trim())) ? true : false;
+    }
+
+    /**
+     * 得到SD卡根目录.
+     */
+    public static File getRootPath() {
+        File path = null;
+        if (APPMethod.sdCardIsAvailable()) {
+            path = Environment.getExternalStorageDirectory(); // 取得sdcard文件路径
+        } else {
+            path = Environment.getDataDirectory();
+        }
+        return path;
+    }
+
+    /**
+     * SD卡是否可用.
+     */
+    public static boolean sdCardIsAvailable() {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            File sd = new File(Environment.getExternalStorageDirectory().getPath());
+            return sd.canWrite();
+        } else
+            return false;
     }
 }

@@ -1,14 +1,11 @@
 package com.brilliant.base;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.basemodule.base.IBaseActivity;
 import com.basemodule.base.IBaseModel;
 import com.basemodule.base.IBasePresenter;
-import com.basemodule.utils.NetWorkUtils;
-import com.brilliant.widget.ErrorLayout;
-import com.brilliant.widget.PopupDialog;
+import com.blankj.utilcode.util.ToastUtils;
 
 /**
  * add your personal code here
@@ -41,56 +38,35 @@ public abstract class BaseActivity<T extends IBasePresenter, E extends IBaseMode
         presentationLayerFuncHelper.hideProgressDialog();
     }
 
-
-    /**
-     *
-     */
-    public PopupDialog confirmDialog;
-
-    /**
-     *
-     */
-    public void showLoading() {
-        startProgressDialog();
-    }
-
-    /**
-     *
-     */
-    public void showLoading(String title) {
-        startProgressDialog(title);
-    }
-
-    /**
-     *
-     */
-    public void hideLoading() {
-        stopProgressDialog();
-    }
-
-    /**
-     *
-     */
-    public void showErrorTip(String msg) {
-        showShortToast(msg);
-    }
-
-    /**
-     * 刷新页面
-     */
     @Override
-    protected void updateViews(boolean isRefresh) {
+    public void showLoading() {
+        if (!isFinishing()) {
+            try {
+                showProgressDialog();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    /**
-     * 检查网络
-     */
-    public void checkNetWork(ErrorLayout error_layout, ErrorLayout.CallClickListener listener) {
-        if (!NetWorkUtils.isNetConnected(this)) {
-            error_layout.setVisibility(View.VISIBLE);
-            error_layout.viewListener(listener);
-        } else {
-            listener.callListener();
+    @Override
+    public void showLoading(String notice) {
+        if (!isFinishing()) {
+            try {
+                showProgressDialog(notice);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void showErrorTip(String s) {
+        ToastUtils.showShortToast(s);
     }
 }

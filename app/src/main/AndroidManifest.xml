@@ -106,14 +106,24 @@
 
         <!-- ################################# service start ################################# -->
 
+        <service android:name=".service.DownloadService" />
 
         <!-- ################################# service end ################################# -->
 
         <!-- ################################# receiver start ################################# -->
 
+        <receiver
+            android:name=".service.NetStateReceiver"
+            android:label="NetworkConnection">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".service.NotificationReceiver" />
 
         <!-- ################################# receiver end ################################# -->
-
     </application>
 
     <!-- ################################# permission start ################################# -->
