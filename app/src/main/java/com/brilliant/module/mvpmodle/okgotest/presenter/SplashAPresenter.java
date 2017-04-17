@@ -25,7 +25,7 @@ public class SplashAPresenter extends SplashAContract.Presenter {
 
     @Override
     public void initZip() {
-        mRxManage.add(mModel.initZip().subscribe(new RxSubscriber<String>(mContext, "false") {
+        mRxManage.add(mModel.initZip().subscribe(new RxSubscriber<String>(mContext, false) {
             @Override
             protected void _onNext(String url) {
                 mView.returnInitZip(url);
@@ -40,7 +40,7 @@ public class SplashAPresenter extends SplashAContract.Presenter {
 
     @Override
     public void queryAdvert() {
-        mRxManage.add(mModel.queryAdvert().subscribe(new RxSubscriber<QueryAdvertBean.DataBean>(mContext, "false") {
+        mRxManage.add(mModel.queryAdvert().subscribe(new RxSubscriber<QueryAdvertBean.DataBean>(mContext, false) {
             @Override
             protected void _onNext(QueryAdvertBean.DataBean bean) {
                 mView.returnQueryAdvert(bean);

@@ -31,6 +31,10 @@ public class ModelActivity extends BaseActivity {
     public void initView() {
     }
 
+    @Override
+    public void initData() {
+    }
+
     //#################################################################### 重写自定义方法 end
 
     //#################################################################### 自定义方法 start

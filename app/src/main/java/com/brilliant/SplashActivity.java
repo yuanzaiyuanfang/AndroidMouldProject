@@ -43,6 +43,11 @@ public class SplashActivity extends BaseActivity {
         Logger.i("HELLO ");
     }
 
+    @Override
+    public void initData() {
+
+    }
+
     //#################################################################### 重写自定义方法 end
 
     //#################################################################### 自定义方法 start
