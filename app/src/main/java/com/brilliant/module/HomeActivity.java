@@ -5,12 +5,15 @@ import android.os.SystemClock;
 import com.blankj.utilcode.util.ToastUtils;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
+import com.brilliant.constant.UIFactory;
 
 public class HomeActivity extends BaseActivity {
 
     //#################################################################### 自定义变量 start
 
     private long mBackPressedTime; // 退出应用相关
+
+    private String download_url = "https://172.16.88.230:8383/apk/ced9ab08-3d7d-4cc7-882d-2d81f72a0976.apk";
 
     //#################################################################### 自定义变量 end
 
@@ -34,6 +37,13 @@ public class HomeActivity extends BaseActivity {
         finish();
     }
 
+    /**
+     * 开启升级
+     */
+    private void downloadUpdateAPK(String download_url) {
+        UIFactory.openDownLoadService(mContext, download_url, "中...");
+    }
+
     //#################################################################### 自定义方法 end
 
     //#################################################################### 重写系统方法 start
@@ -50,12 +60,11 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void initPresenter() {
-
     }
 
     @Override
     public void initView() {
-
+        downloadUpdateAPK(download_url);
     }
 
     //#################################################################### 重写系统方法 end

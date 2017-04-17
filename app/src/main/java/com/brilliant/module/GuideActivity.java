@@ -1,11 +1,15 @@
 package com.brilliant.module;
 
+import android.widget.TextView;
+
 import com.basemodule.local.sharedpref.SharedPrefUtils;
 import com.brilliant.AndroidAPP;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
 import com.brilliant.constant.APPConstant;
 import com.brilliant.constant.UIFactory;
+
+import butterknife.BindView;
 
 /**
  * description:
@@ -17,6 +21,9 @@ public class GuideActivity extends BaseActivity {
     //#################################################################### 自定义变量 start
 
     private boolean mIsSkip = false;
+
+    @BindView(R.id.guide_content)
+    TextView guide_content;
 
     //#################################################################### 自定义变量 end
 
@@ -34,6 +41,7 @@ public class GuideActivity extends BaseActivity {
     @Override
     public void initView() {
         _doSkip();
+        guide_content.setText("hello");
     }
 
     //#################################################################### 重写自定义方法 end
