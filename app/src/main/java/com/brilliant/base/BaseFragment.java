@@ -16,12 +16,14 @@ import com.basemodule.base.IBasePresenter;
  * User: Administrator
  */
 public abstract class BaseFragment<T extends IBasePresenter, E extends IBaseModel> extends IBaseFragment<T, E>
-        implements PresentationLayerFunc {
+        implements PresentationLayerFunc, View.OnClickListener {
 
     private PresentationLayerFuncHelper presentationLayerFuncHelper;
 
     @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         presentationLayerFuncHelper = new PresentationLayerFuncHelper(getActivity());
         return super.rootView;
     }
@@ -39,5 +41,9 @@ public abstract class BaseFragment<T extends IBasePresenter, E extends IBaseMode
     @Override
     public void hideProgressDialog() {
         presentationLayerFuncHelper.hideProgressDialog();
+    }
+
+    @Override
+    public void onClick(View v) {
     }
 }

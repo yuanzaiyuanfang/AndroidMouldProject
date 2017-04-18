@@ -9,7 +9,11 @@ import android.os.IBinder;
 
 import com.brilliant.module.GuideActivity;
 import com.brilliant.module.HomeActivity;
-import com.brilliant.module.mvpmodle.okgotest.view.OkGoTestActivity;
+import com.brilliant.module.mvpmodle.okgotest.view.FileDownloadActivity;
+import com.brilliant.module.mvpmodle.okgotest.view.FormUploadActivity;
+import com.brilliant.module.mvpmodle.okgotest.view.OkGoRequestActivity;
+import com.brilliant.module.mvpmodle.okgotest.view.SyncActivity;
+import com.brilliant.module.mvpmodle.okgotest.view.TestActivity;
 import com.brilliant.service.DownloadService;
 import com.brilliant.service.ICallbackResult;
 
@@ -43,13 +47,57 @@ public class UIFactory {
     }
 
     /**
-     * OKGO测试页面
+     * 进入测试页面
+     *
+     * @param activity
+     * @param requestCode
+     */
+    public static void startTestActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, TestActivity.class);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * OKGO网络请求测试页面
      *
      * @param activity
      * @param requestCode
      */
     public static void startOkGoTestActivity(Activity activity, int requestCode) {
-        Intent intent = new Intent(activity, OkGoTestActivity.class);
+        Intent intent = new Intent(activity, OkGoRequestActivity.class);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 同步请求测试页面
+     *
+     * @param activity
+     * @param requestCode
+     */
+    public static void startSyncActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, SyncActivity.class);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 文件上传测试页面
+     *
+     * @param activity
+     * @param requestCode
+     */
+    public static void startFormUploadActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, FormUploadActivity.class);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 文件下载测试页面
+     *
+     * @param activity
+     * @param requestCode
+     */
+    public static void startFileDownloadActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, FileDownloadActivity.class);
         activity.startActivityForResult(intent, requestCode);
     }
 

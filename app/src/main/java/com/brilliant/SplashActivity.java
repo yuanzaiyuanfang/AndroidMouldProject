@@ -65,10 +65,10 @@ public class SplashActivity extends BaseActivity {
                 UIFactory.startGuideActivity(this, RESULT_OK);
             } else {
                 // 正常的页面流程
-                 UIFactory.startHomeActivity(this, RESULT_OK);
+//                 UIFactory.startHomeActivity(this, RESULT_OK);
 
-                // 代码示例
-//                UIFactory.startOkGoTestActivity(this, RESULT_OK);
+                // 代码示例--测试
+                UIFactory.startTestActivity(this, RESULT_OK);
             }
             //===
             finish();

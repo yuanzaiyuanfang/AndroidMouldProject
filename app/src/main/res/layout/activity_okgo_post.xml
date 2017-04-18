@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/splash_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- 普通的post请求 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="###### 1. 普通的post请求 ######"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="hello" />
+            </LinearLayout>
+
+            <!-- 请求图片 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="###### 2. 请求图片 ######"
+                    android:textColor="@color/red" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
+            <!-- 文件上传 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="###### 3. 文件上传 ######"
+                    android:textColor="@color/red" />
+
+                <Button
+                    android:id="@+id/selectImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="选择图片（可多选）"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/formUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="上传"
+                    android:textAllCaps="false" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/downloadSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="--M/--M"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/netSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:text="---K/s"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="--.--%"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <com.brilliant.widget.NumberProgressBar
+                    android:id="@+id/pbProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:progress_reached_bar_height="1.5dp"
+                    app:progress_reached_color="#3498DB"
+                    app:progress_text_color="#3498DB"
+                    app:progress_text_size="10sp"
+                    app:progress_unreached_bar_height="0.75dp"
+                    app:progress_unreached_color="#CCCCCC" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#888"
+                    android:text="选择的图片路径"
+                    android:textColor="#FFF" />
+
+                <TextView
+                    android:id="@+id/images"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--" />
+            </LinearLayout>
+
+            <!-- 文件下载 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="###### 4. 文件下载 ######"
+                    android:textColor="@color/red" />
+
+                <Button
+                    android:id="@+id/fileDownload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="开始下载"
+                    android:textAllCaps="false" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/download_downloadSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="--M/--M"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/download_netSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:text="---K/s"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/download_tvProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="--.--%"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <com.brilliant.widget.NumberProgressBar
+                    android:id="@+id/download_pbProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:progress_reached_bar_height="1.5dp"
+                    app:progress_reached_color="#3498DB"
+                    app:progress_text_color="#3498DB"
+                    app:progress_text_size="10sp"
+                    app:progress_unreached_bar_height="0.75dp"
+                    app:progress_unreached_color="#CCCCCC" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+

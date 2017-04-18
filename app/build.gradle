@@ -23,11 +23,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             // mainfest中参数配置
             manifestPlaceholders = [
-                    APP_NAME        : "@string/app_name",
-                    APP_ICON        : "@mipmap/ic_launcher",
+                    APP_NAME    : "@string/app_name",
+                    APP_ICON    : "@mipmap/ic_launcher",
                     // UMENT配置
-                    UMENG_APPKEY    : "562dd44967e58e4437004451",
-                    PACKAGE_NAME    : "com.brilliant"
+                    UMENG_APPKEY: "562dd44967e58e4437004451",
+                    PACKAGE_NAME: "com.brilliant"
             ]
             ndk {
                 abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
@@ -40,11 +40,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             // mainfest中参数配置
             manifestPlaceholders = [
-                    APP_NAME        : "@string/app_name_debug",
-                    APP_ICON        : "@mipmap/ic_launcher",
+                    APP_NAME    : "@string/app_name_debug",
+                    APP_ICON    : "@mipmap/ic_launcher",
                     // UMENT配置
-                    UMENG_APPKEY    : "562dd44967e58e4437004451",
-                    PACKAGE_NAME    : "com.brilliant"
+                    UMENG_APPKEY: "562dd44967e58e4437004451",
+                    PACKAGE_NAME: "com.brilliant"
             ]
             ndk {
                 abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
@@ -56,7 +56,7 @@ android {
         //指定数据库schema版本号，迁移等操作会用到
         schemaVersion 1
         //通过gradle插件生成的数据库相关文件的包名，默认为你的entity所在的包名
-      //  daoPackage 'cn.sunfit.jifeng.capabilities.db.dao'
+        //  daoPackage 'cn.sunfit.jifeng.capabilities.db.dao'
         //这就是我们上面说到的自定义生成数据库文件的目录了，可以将生成的文件放到我们的java目录中，而不是build中，这样就不用额外的设置资源目录了
         targetGenDir 'src/main/java'
     }
@@ -221,11 +221,15 @@ dependencies {
     compile 'com.github.BrillantZhao:AndroidFilePicker:1.0.2'
 
     //=== AndroidBaseModule(https://github.com/BrillantZhao/AndroidBaseModule)
-    compile 'com.github.BrillantZhao:AndroidBaseModule:1.1.2.21'
+    compile 'com.github.BrillantZhao:AndroidBaseModule:1.1.2.23'
 
     //=== Butter Knife  (https://github.com/JakeWharton/butterknife)
+    // 和Dagger2配合使用需要注意把annotationProcessor改为apt
     compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    //=== AndroidFilePicker
+    compile 'com.github.BrillantZhao:AndroidFilePicker:1.0.4'
 
     //################## 引用第三方工程
 
