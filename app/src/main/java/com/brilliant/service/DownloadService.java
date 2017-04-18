@@ -122,8 +122,14 @@ public class DownloadService extends Service {
     };
 
     @Override
-    public IBinder onBind(Intent intent) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         downloadUrl = intent.getStringExtra(BUNDLE_KEY_DOWNLOAD_URL);
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+//        downloadUrl = intent.getStringExtra(BUNDLE_KEY_DOWNLOAD_URL);
         saveFileName = saveFileName + APPConstant.APP_NAME;
         mTitle = String.format(mTitle, intent.getStringExtra(BUNDLE_KEY_TITLE));
         return binder;
