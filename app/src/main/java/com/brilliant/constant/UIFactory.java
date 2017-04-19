@@ -9,11 +9,11 @@ import android.os.IBinder;
 
 import com.brilliant.module.GuideActivity;
 import com.brilliant.module.HomeActivity;
-import com.brilliant.module.mvpmodle.okgotest.view.FileDownloadActivity;
-import com.brilliant.module.mvpmodle.okgotest.view.FormUploadActivity;
-import com.brilliant.module.mvpmodle.okgotest.view.OkGoRequestActivity;
-import com.brilliant.module.mvpmodle.okgotest.view.SyncActivity;
-import com.brilliant.module.mvpmodle.okgotest.view.TestActivity;
+import com.brilliant.module.mvpmodle.test.view.FileDownloadActivity;
+import com.brilliant.module.mvpmodle.test.view.FormUploadActivity;
+import com.brilliant.module.mvpmodle.test.view.OkGoRequestActivity;
+import com.brilliant.module.mvpmodle.test.view.SyncActivity;
+import com.brilliant.module.mvpmodle.test.view.TestActivity;
 import com.brilliant.service.DownloadService;
 import com.brilliant.service.ICallbackResult;
 

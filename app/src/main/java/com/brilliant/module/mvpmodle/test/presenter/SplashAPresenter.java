@@ -1,4 +1,4 @@
-package com.brilliant.module.mvpmodle.okgotest.presenter;
+package com.brilliant.module.mvpmodle.test.presenter;
 
 /**
  * Created by Conan on 2017/2/23.
@@ -8,8 +8,8 @@ package com.brilliant.module.mvpmodle.okgotest.presenter;
 import android.graphics.Bitmap;
 
 import com.basemodule.baserx.RxSubscriber;
-import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
-import com.brilliant.module.mvpmodle.okgotest.contact.SplashAContract;
+import com.brilliant.module.mvpmodle.test.bean.QueryAdvertBean;
+import com.brilliant.module.mvpmodle.test.contact.SplashAContract;
 
 import java.io.File;
 import java.util.ArrayList;

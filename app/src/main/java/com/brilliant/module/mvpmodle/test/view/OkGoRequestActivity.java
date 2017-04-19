@@ -1,4 +1,4 @@
-package com.brilliant.module.mvpmodle.okgotest.view;
+package com.brilliant.module.mvpmodle.test.view;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,10 +10,10 @@ import android.widget.TextView;
 import com.basemodule.utils.JsonUtils;
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
-import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
-import com.brilliant.module.mvpmodle.okgotest.contact.SplashAContract;
-import com.brilliant.module.mvpmodle.okgotest.model.SplashAModel;
-import com.brilliant.module.mvpmodle.okgotest.presenter.SplashAPresenter;
+import com.brilliant.module.mvpmodle.test.bean.QueryAdvertBean;
+import com.brilliant.module.mvpmodle.test.contact.SplashAContract;
+import com.brilliant.module.mvpmodle.test.model.SplashAModel;
+import com.brilliant.module.mvpmodle.test.presenter.SplashAPresenter;
 import com.brilliant.widget.NumberProgressBar;
 import com.orhanobut.logger.Logger;
 import com.vincent.filepicker.Constant;

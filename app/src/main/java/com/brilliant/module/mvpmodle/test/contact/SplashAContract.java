@@ -1,11 +1,11 @@
-package com.brilliant.module.mvpmodle.okgotest.contact;
+package com.brilliant.module.mvpmodle.test.contact;
 
 import android.graphics.Bitmap;
 
 import com.brilliant.base.BaseModel;
 import com.brilliant.base.BasePresenter;
 import com.brilliant.base.BaseView;
-import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
+import com.brilliant.module.mvpmodle.test.bean.QueryAdvertBean;
 
 import java.io.File;
 import java.util.ArrayList;

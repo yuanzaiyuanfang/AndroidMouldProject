@@ -1,4 +1,4 @@
-package com.brilliant.module.mvpmodle.okgotest.view;
+package com.brilliant.module.mvpmodle.test.view;
 
 import android.support.annotation.Nullable;
 import android.text.format.Formatter;

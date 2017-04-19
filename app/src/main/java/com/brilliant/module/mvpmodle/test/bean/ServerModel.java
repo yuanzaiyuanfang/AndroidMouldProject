@@ -1,4 +1,4 @@
-package com.brilliant.module.mvpmodle.okgotest.bean;
+package com.brilliant.module.mvpmodle.test.bean;
 
 import java.io.Serializable;
 

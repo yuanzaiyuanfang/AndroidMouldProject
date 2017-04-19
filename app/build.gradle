@@ -3,20 +3,47 @@ apply plugin: 'android-apt' // 注释处理
 apply plugin: 'org.greenrobot.greendao'  // greenDAO
 apply plugin: 'com.antfortune.freeline'
 
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+
+    signingConfigs {
+        signingConfig {
+            keyAlias 'basemodule'
+            keyPassword 'basemodule'
+            storeFile file('/basemodule.jks')
+            storePassword 'basemodule'
+        }
+    }
+
     defaultConfig {
         applicationId "com.brilliant"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true // Enabling multidex support.
+        versionName APP_VERSION
+        resValue("string", 'app_version', APP_VERSION)
+        buildConfigField "boolean", "LEO_DEBUG", "true"
+        buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
+        buildConfigField 'String', 'API_SERVER_URL_MALL', RELEASE_API_SERVER_URL_MALL
+        signingConfig signingConfigs.signingConfig
     }
+
     buildTypes {
         release {
+            buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
+            buildConfigField 'String', 'API_SERVER_URL_MALL', RELEASE_API_SERVER_URL_MALL
+            buildConfigField 'String', 'IM_SERVER_HOST', RELEASE_IM_SERVER_HOST
+            buildConfigField 'int', 'IM_SERVER_PORT', RELEASE_IM_SERVER_PORT
+            buildConfigField "boolean", "LEO_DEBUG", RELEASE_LEO_DEBUG
             zipAlignEnabled true // Zipalign优化
             minifyEnabled true // 是否混淆
             shrinkResources true // 是否去除无效的资源文件
@@ -34,6 +61,11 @@ android {
             }
         }
         debug {
+            buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
+            buildConfigField 'String', 'API_SERVER_URL_MALL', RELEASE_API_SERVER_URL_MALL
+            buildConfigField 'String', 'IM_SERVER_HOST', RELEASE_IM_SERVER_HOST
+            buildConfigField 'int', 'IM_SERVER_PORT', RELEASE_IM_SERVER_PORT
+            buildConfigField "boolean", "LEO_DEBUG", RELEASE_LEO_DEBUG
             zipAlignEnabled false // Zipalign优化
             minifyEnabled false // 是否混淆
             shrinkResources false // 是否去除无效的资源文件
@@ -86,6 +118,10 @@ android {
         release.setRoot('build-types/release')
     }
 
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+
     // productFlavors 定义了一个应用的自定义构建版本
     //一个单一的项目可以同时定义多个不同的 flavor 来改变应用的输出。
     // productFlavors 这个概念是为了解决不同的版本之间的差异非常小的情况，通常用于区分同一个应用的不同渠道/客户等，可包含少量业务功能差别。
@@ -117,6 +153,7 @@ android {
     // to resolve-->  Error:Conflict with dependency 'com.google.code.findbugs:jsr305' in project ':app'.
     // Resolved versions for app (3.0.1) and test app (2.0.1) differ. See http://g.co/androidstudio/app-test-app-conflict for details.
     configurations.all {
+        //解决 Conflict with dependency 'com.google.code.findbugs:jsr305'
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
     }
 
@@ -124,6 +161,37 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
+    }
+
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def newName
+            def timeNow
+            def oldFile = output.outputFile
+            def outDirectory = oldFile.parent
+
+            if ("true".equals(IS_JENKINS)) {
+                timeNow = JENKINS_TIME
+                // 使用相对路径，构建后执行的 Execute Windows batch command 脚本为：
+                // curl -F "envType=1" -F "prodType=1001" -F "package=@E:\jenkins\workspace\AndroidFilePicker\app\build\outputs\apk\jenkins\filepicker.apk" https://172.16.88.230:8383/apiv1/app/upload --insecure
+                outDirectory = outDirectory + '/jenkins'
+                // 动态生成安装包名称
+//                newName = 'moduleproduct-v' +
+//                        APP_VERSION + '-' + variant.productFlavors[0].name + timeNow + '-' + variant.buildType.name + '.apk'
+                // 使用固定的名字，方便jenkins打包完成后自动上传到服务器
+                newName = 'moduleproduct.apk'
+            } else {
+                timeNow = getDate()
+                if (variant.buildType.name.equals('debug')) {
+                    newName = "moduleproduct-v${APP_VERSION}-debug.apk"
+                } else {
+                    newName = 'moduleproduct-v' +
+                            APP_VERSION + '-' + variant.productFlavors[0].name + timeNow + '-' + variant.buildType.name + '.apk'
+                }
+            }
+            output.outputFile = new File(outDirectory, newName)
+        }
     }
 }
 
@@ -221,7 +289,7 @@ dependencies {
     compile 'com.github.BrillantZhao:AndroidFilePicker:1.0.2'
 
     //=== AndroidBaseModule(https://github.com/BrillantZhao/AndroidBaseModule)
-    compile 'com.github.BrillantZhao:AndroidBaseModule:1.1.2.23'
+    compile 'com.github.BrillantZhao:AndroidBaseModule:1.1.2.29'
 
     //=== Butter Knife  (https://github.com/JakeWharton/butterknife)
     // 和Dagger2配合使用需要注意把annotationProcessor改为apt

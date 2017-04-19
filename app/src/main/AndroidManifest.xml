@@ -50,27 +50,27 @@
         <!-- ################################## activity end ################################## -->
         <!-- 测试 -->
         <activity
-            android:name=".module.mvpmodle.okgotest.view.TestActivity"
+            android:name=".module.mvpmodle.test.view.TestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".module.mvpmodle.okgotest.view.OkGoRequestActivity"
+            android:name=".module.mvpmodle.test.view.OkGoRequestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".module.mvpmodle.okgotest.view.SyncActivity"
+            android:name=".module.mvpmodle.test.view.SyncActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".module.mvpmodle.okgotest.view.FileDownloadActivity"
+            android:name=".module.mvpmodle.test.view.FileDownloadActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".module.mvpmodle.okgotest.view.FormUploadActivity"
+            android:name=".module.mvpmodle.test.view.FormUploadActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|fontScale"
             android:screenOrientation="portrait" />
 

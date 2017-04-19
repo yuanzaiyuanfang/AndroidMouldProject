@@ -1,4 +1,4 @@
-package com.brilliant.module.mvpmodle.okgotest.model;
+package com.brilliant.module.mvpmodle.test.model;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,8 +7,8 @@ import com.basemodule.baserx.RxSchedulers;
 import com.basemodule.local.sharedpref.SharedPrefUtils;
 import com.brilliant.api.APIConstant;
 import com.brilliant.api.APIMethod;
-import com.brilliant.module.mvpmodle.okgotest.bean.QueryAdvertBean;
-import com.brilliant.module.mvpmodle.okgotest.contact.SplashAContract;
+import com.brilliant.module.mvpmodle.test.bean.QueryAdvertBean;
+import com.brilliant.module.mvpmodle.test.contact.SplashAContract;
 
 import java.io.File;
 import java.util.ArrayList;

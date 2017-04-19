@@ -1,4 +1,4 @@
-package com.brilliant.module.mvpmodle.okgotest.view;
+package com.brilliant.module.mvpmodle.test.view;
 
 import android.content.Intent;
 import android.text.format.Formatter;
@@ -12,7 +12,7 @@ import com.brilliant.api.APIConstant;
 import com.brilliant.api.APIMethod;
 import com.brilliant.api.JsonCallback;
 import com.brilliant.base.BaseActivity;
-import com.brilliant.module.mvpmodle.okgotest.bean.ServerModel;
+import com.brilliant.module.mvpmodle.test.bean.ServerModel;
 import com.brilliant.widget.NumberProgressBar;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.request.BaseRequest;
