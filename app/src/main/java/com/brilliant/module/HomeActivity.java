@@ -64,7 +64,13 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        downloadUpdateAPK(download_url);
+        // 下载升级
+//        downloadUpdateAPK(download_url);
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     @Override

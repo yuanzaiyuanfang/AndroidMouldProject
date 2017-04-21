@@ -1,7 +1,12 @@
-package com.brilliant.demo;
+package com.brilliant.module.mvpmodle.test.view;
+
+import android.view.View;
 
 import com.brilliant.R;
 import com.brilliant.base.BaseActivity;
+import com.brilliant.constant.UIFactory;
+
+import butterknife.OnClick;
 
 /**
  * activity模板，所有新建的activity都应该复制该文件然后自定义
@@ -9,7 +14,7 @@ import com.brilliant.base.BaseActivity;
  * Date: 2017/2/13 11:10
  * User: Administrator
  */
-public class ModelActivity extends BaseActivity {
+public class TestActivity extends BaseActivity {
 
     //#################################################################### 自定义变量 start
 
@@ -20,7 +25,7 @@ public class ModelActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_model;
+        return R.layout.activity_test;
     }
 
     @Override
@@ -42,6 +47,30 @@ public class ModelActivity extends BaseActivity {
     //#################################################################### 自定义方法 end
 
     //#################################################################### 重写系统方法 start
+
+    @OnClick({R.id.okgo_request, R.id.sync, R.id.upload, R.id.download})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.okgo_request:
+                //  okgo 网络请求测试
+                UIFactory.startOkGoTestActivity(this, RESULT_OK);
+                break;
+            case R.id.sync:
+                // 同步请求
+                UIFactory.startSyncActivity(this, RESULT_OK);
+                break;
+            case R.id.upload:
+                // 文件上传
+                UIFactory.startFormUploadActivity(this, RESULT_OK);
+                break;
+            case R.id.download:
+                // 文件下载
+                UIFactory.startFileDownloadActivity(this, RESULT_OK);
+                break;
+            default:
+                break;
+        }
+    }
 
     @Override
     public void onBackPressed() {

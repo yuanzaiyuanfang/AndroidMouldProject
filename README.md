@@ -1,6 +1,7 @@
 # AndroidMouldProject
 
-##### 练习MVP架构开发的App，算是对自己学过的知识做一个总结，做了有一段时间，界面比较多，代码量还是有的，里面做了大量封装，整体代码整理得很干净，这个我已经尽力整理了- -。
+##### android快速开发模板工程，封装了一些常用的模块，通过引用AndroidBaseModule基础工程的方式来实现持续更新，同时使工程更加简洁，使开发者只需要关心自己的逻辑实现。
+##### 一些用到的代码示例放在了 com.brillant.module.mvpmodle.test 目录下面，开发者可以参考示例代码，根据自己的需要实现自己的逻辑。
 
 ## Screenshot
 
@@ -76,8 +77,6 @@
 	：集成多种动画效果的Drawable，之前有看源码觉得代码封装得挺好，动画不仅仅只能用在View上
 - [filepicker](https://github.com/Angads25/android-filepicker)
 	：这个是用来处理PreferenceScreen的文件选中库，PreferenceScreen感觉平时不怎么看到使用，用法到时挺特别
-- [tinker](https://github.com/Tencent/tinker)
-	：微信Android热补丁方案，功能强大，和其它热修补方案对比看这里[wiki](https://github.com/Tencent/tinker/wiki)
 - [DragSlopLayout](https://github.com/Rukey7/DragSlopLayout)
 	：一个辅助开发拖拽功能的库，这是我为了做这个App的某些功能封装的库- -，现在倒也有用在工作的项目上
 - [IjkPlayerView](https://github.com/Rukey7/IjkPlayerView)

@@ -18,7 +18,7 @@ public class PresentationLayerFuncHelper implements PresentationLayerFunc {
 
     private Context context;
 
-    private CustomProgressDialog loadingLayout;
+    private CustomProgressDialog progressDialog;
 
     public PresentationLayerFuncHelper(Context context) {
         this.context = context;
@@ -26,25 +26,25 @@ public class PresentationLayerFuncHelper implements PresentationLayerFunc {
 
     @Override
     public void showProgressDialog() {
-        if (loadingLayout == null) {
-            loadingLayout = new CustomProgressDialog(context, R.style.CustomProgressDialog);
+        if (progressDialog == null) {
+            progressDialog = new CustomProgressDialog(context, R.style.CustomProgressDialog);
         }
-        loadingLayout.show();
+        progressDialog.show();
     }
 
     @Override
     public void showProgressDialog(String notice) {
-        if (loadingLayout == null) {
-            loadingLayout = new CustomProgressDialog(context, R.style.CustomProgressDialog);
+        if (progressDialog == null) {
+            progressDialog = new CustomProgressDialog(context, R.style.CustomProgressDialog);
         }
-        loadingLayout.showNotice(notice);
-        loadingLayout.show();
+        progressDialog.showNotice(notice);
+        progressDialog.show();
     }
 
     @Override
     public void hideProgressDialog() {
-        if (loadingLayout != null) {
-            loadingLayout.dismiss();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
         }
     }
 }

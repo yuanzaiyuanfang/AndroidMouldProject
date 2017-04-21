@@ -1,6 +1,7 @@
 package com.brilliant.base;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.basemodule.base.IBaseActivity;
 import com.basemodule.base.IBaseModel;
@@ -13,7 +14,7 @@ import com.blankj.utilcode.util.ToastUtils;
  */
 
 public abstract class BaseActivity<T extends IBasePresenter, E extends IBaseModel> extends IBaseActivity<T, E>
-        implements PresentationLayerFunc {
+        implements PresentationLayerFunc,View.OnClickListener {
 
     private PresentationLayerFuncHelper presentationLayerFuncHelper;
 
@@ -59,5 +60,9 @@ public abstract class BaseActivity<T extends IBasePresenter, E extends IBaseMode
     @Override
     public void showErrorTip(String s) {
         ToastUtils.showShortToast(s);
+    }
+
+    @Override
+    public void onClick(View v) {
     }
 }

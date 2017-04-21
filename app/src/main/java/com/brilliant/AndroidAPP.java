@@ -7,6 +7,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.brilliant.base.BaseApplication;
 import com.brilliant.constant.APPConstant;
 import com.brilliant.constant.APPMethod;
+import com.brilliant.widget.dialog.CustomProgressDialog;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -66,6 +67,8 @@ public class AndroidAPP extends BaseApplication {
      */
     private void _initConfig() {
         if (BuildConfig.DEBUG) {
+            //
+            setProgressDialog(new CustomProgressDialog(getApplicationContext(), R.style.CustomProgressDialog));
             //=== okgo
             initOkGo(null, null);
             //=== ali httpdns
