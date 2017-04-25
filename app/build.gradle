@@ -15,10 +15,10 @@ android {
 
     signingConfigs {
         signingConfig {
-            keyAlias 'basemodule'
-            keyPassword 'basemodule'
-            storeFile file('/basemodule.jks')
-            storePassword 'basemodule'
+            keyAlias 'module123'
+            keyPassword 'module123'
+            storeFile file('../basemodule.jks')
+            storePassword 'module123'
         }
     }
 
@@ -44,9 +44,9 @@ android {
             buildConfigField 'String', 'IM_SERVER_HOST', RELEASE_IM_SERVER_HOST
             buildConfigField 'int', 'IM_SERVER_PORT', RELEASE_IM_SERVER_PORT
             buildConfigField "boolean", "LEO_DEBUG", RELEASE_LEO_DEBUG
-            zipAlignEnabled true // Zipalign优化
-            minifyEnabled true // 是否混淆
-            shrinkResources true // 是否去除无效的资源文件
+            zipAlignEnabled false // Zipalign优化
+            minifyEnabled false // 是否混淆
+            shrinkResources false // 是否去除无效的资源文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             // mainfest中参数配置
             manifestPlaceholders = [
@@ -213,8 +213,9 @@ dependencies {
 
     //################## git上第三方库
     //=== leakcanary(https://github.com/square/leakcanary)
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 
     //=== rxjava(https://github.com/ReactiveX/RxJava)
     compile 'io.reactivex:rxjava:1.1.9'
