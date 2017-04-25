@@ -6,12 +6,14 @@ import android.widget.TextView;
 
 import com.brilliant.R;
 import com.brilliant.api.APIConstant;
+import com.brilliant.api.StringDialogCallback;
 import com.brilliant.base.BaseActivity;
 import com.lzy.okgo.OkGo;
 
 import java.io.IOException;
 
 import butterknife.BindView;
+import okhttp3.Call;
 import okhttp3.Response;
 
 public class SyncActivity extends BaseActivity {
@@ -24,14 +26,8 @@ public class SyncActivity extends BaseActivity {
     private class InnerHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
-            try {
-                Response response = (Response) msg.obj;
-                //对response需要自己做解析
-                String data = response.body().string();
-                sync_content.setText(data);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            //对response需要自己做解析
+            sync_content.setText((String) msg.obj);
         }
     }
 
@@ -53,7 +49,10 @@ public class SyncActivity extends BaseActivity {
     @Override
     public void initData() {
         // 同步请求
-        sync();
+        //  sync();
+
+        // https请求测试
+        httpsSyncTest();
     }
 
     @Override
@@ -85,5 +84,52 @@ public class SyncActivity extends BaseActivity {
                 }
             }
         }).start();
+    }
+
+    /**
+     *
+     */
+    public void httpsSyncTest() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    //同步会阻塞主线程，必须开线程
+//                    // https://172.16.88.230:8383/apiv1/app/listAllProds?pageNo=1&platform=2
+//                    Response response = OkGo.get("https://172.16.88.230:8383/apiv1/app/listAllProds")//
+//                            .tag(this)//
+//                            .headers("header1", "headerValue1")//
+//                            .params("pageNo", "1")//
+//                            .params("platform", "2")//
+//                            .execute();  //不传callback即为同步请求
+//
+//                    Message message = Message.obtain();
+//                    message.obj = response;
+//                    handler.sendMessage(message);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+
+        OkGo.get("https://172.16.88.230:8383/apiv1/app/listAllProds")//
+                .tag(this)//
+                .headers("header1", "headerValue1")//
+                .params("pageNo", "1")//
+                .params("platform", "2")//
+                .execute(new StringDialogCallback(this) {
+                    @Override
+                    public void onSuccess(String data, Call call, Response response) {
+                        Message message = Message.obtain();
+                        message.obj = data;
+                        handler.sendMessage(message);
+                    }
+
+                    @Override
+                    public void onError(Call call, Response response, Exception e) {
+                        super.onError(call, response, e);
+                        // handleError(call, response);
+                    }
+                });
     }
 }
