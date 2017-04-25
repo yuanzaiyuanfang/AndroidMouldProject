@@ -110,7 +110,7 @@ public class APIMethod {
         HashMap<String, String> params = new HashMap<>();
 
         //===
-        return OkGoRequest.bitmapRequest(context, APIConstant.URL_IMAGE, params).getCall(BitmapConvert.create(), RxAdapter.<Bitmap>create());
+        return OkGoRequest.bitmapRequestWithGet(context, APIConstant.URL_IMAGE, params).getCall(BitmapConvert.create(), RxAdapter.<Bitmap>create());
     }
 
     /**
