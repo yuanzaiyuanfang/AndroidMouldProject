@@ -14,11 +14,11 @@ android {
     buildToolsVersion "25.0.2"
 
     signingConfigs {
-        signingConfig {
-            keyAlias 'module123'
-            keyPassword 'module123'
-            storeFile file('../basemodule.jks')
-            storePassword 'module123'
+        release {
+            keyAlias 'moduleproject'
+            keyPassword 'moduleproject'
+            storeFile file('../moduleproject.jks')
+            storePassword 'moduleproject'
         }
     }
 
@@ -31,23 +31,15 @@ android {
         multiDexEnabled true // Enabling multidex support.
         versionName APP_VERSION
         resValue("string", 'app_version', APP_VERSION)
-        buildConfigField "boolean", "LEO_DEBUG", "true"
-        buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
-        buildConfigField 'String', 'API_SERVER_URL_MALL', RELEASE_API_SERVER_URL_MALL
-        signingConfig signingConfigs.signingConfig
     }
 
     buildTypes {
         release {
-            buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
-            buildConfigField 'String', 'API_SERVER_URL_MALL', RELEASE_API_SERVER_URL_MALL
-            buildConfigField 'String', 'IM_SERVER_HOST', RELEASE_IM_SERVER_HOST
-            buildConfigField 'int', 'IM_SERVER_PORT', RELEASE_IM_SERVER_PORT
-            buildConfigField "boolean", "LEO_DEBUG", RELEASE_LEO_DEBUG
             zipAlignEnabled false // Zipalign优化
             minifyEnabled false // 是否混淆
             shrinkResources false // 是否去除无效的资源文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
             // mainfest中参数配置
             manifestPlaceholders = [
                     APP_NAME    : "@string/app_name",
@@ -61,15 +53,11 @@ android {
             }
         }
         debug {
-            buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
-            buildConfigField 'String', 'API_SERVER_URL_MALL', RELEASE_API_SERVER_URL_MALL
-            buildConfigField 'String', 'IM_SERVER_HOST', RELEASE_IM_SERVER_HOST
-            buildConfigField 'int', 'IM_SERVER_PORT', RELEASE_IM_SERVER_PORT
-            buildConfigField "boolean", "LEO_DEBUG", RELEASE_LEO_DEBUG
             zipAlignEnabled false // Zipalign优化
             minifyEnabled false // 是否混淆
             shrinkResources false // 是否去除无效的资源文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
             // mainfest中参数配置
             manifestPlaceholders = [
                     APP_NAME    : "@string/app_name_debug",
