@@ -73,10 +73,7 @@ public class HomeActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void updateViews(boolean b) {
 
-    }
 
     //#################################################################### 重写系统方法 end
 }
