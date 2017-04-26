@@ -1,4 +1,4 @@
-package com.brilliant.api;
+package com.brilliant.okgo.utils;
 
 import com.basemodule.okgo.utils.Convert;
 import com.brilliant.base.IBaseBean;

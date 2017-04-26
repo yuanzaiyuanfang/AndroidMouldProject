@@ -12,6 +12,8 @@ import com.brilliant.module.HomeActivity;
 import com.brilliant.module.mvpmodle.test.view.FileDownloadActivity;
 import com.brilliant.module.mvpmodle.test.view.FormUploadActivity;
 import com.brilliant.module.mvpmodle.test.view.OkGoRequestActivity;
+import com.brilliant.module.mvpmodle.test.view.RequestPermissionMultipleActivity;
+import com.brilliant.module.mvpmodle.test.view.RequestPermissionSingleActivity;
 import com.brilliant.module.mvpmodle.test.view.SyncActivity;
 import com.brilliant.module.mvpmodle.test.view.TestActivity;
 import com.brilliant.service.DownloadService;
@@ -98,6 +100,28 @@ public class UIFactory {
      */
     public static void startFileDownloadActivity(Activity activity, int requestCode) {
         Intent intent = new Intent(activity, FileDownloadActivity.class);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 权限申请页面
+     *
+     * @param activity
+     * @param requestCode
+     */
+    public static void startRequestPermissionSingleActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, RequestPermissionSingleActivity.class);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 权限申请页面
+     *
+     * @param activity
+     * @param requestCode
+     */
+    public static void startRequestPermissionMultipleActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, RequestPermissionMultipleActivity.class);
         activity.startActivityForResult(intent, requestCode);
     }
 

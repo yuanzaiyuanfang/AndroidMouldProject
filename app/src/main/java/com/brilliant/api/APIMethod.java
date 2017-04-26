@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import com.basemodule.baserx.RxSchedulers;
 import com.basemodule.okgo.OkGoRequest;
 import com.brilliant.module.mvpmodle.test.bean.QueryAdvertBean;
+import com.brilliant.okgo.utils.JsonCallback;
+import com.brilliant.okgo.utils.JsonConvert;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.convert.BitmapConvert;
