@@ -278,7 +278,7 @@ dependencies {
     compile 'com.github.BrillantZhao:AndroidFilePicker:1.0.2'
 
     //=== AndroidBaseModule(https://github.com/BrillantZhao/AndroidBaseModule)
-    compile 'com.github.BrillantZhao:AndroidBaseModule:1.1.2.29'
+    compile 'com.github.BrillantZhao:AndroidBaseModule:1.1.2.30'
 
     //=== Butter Knife  (https://github.com/JakeWharton/butterknife)
     // 和Dagger2配合使用需要注意把annotationProcessor改为apt
