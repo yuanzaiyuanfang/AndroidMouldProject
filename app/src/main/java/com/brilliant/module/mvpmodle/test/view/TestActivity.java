@@ -48,7 +48,8 @@ public class TestActivity extends BaseActivity {
 
     //#################################################################### 重写系统方法 start
 
-    @OnClick({R.id.okgo_request, R.id.sync, R.id.upload, R.id.download})
+    @OnClick({R.id.okgo_request, R.id.sync, R.id.upload, R.id.download, R.id.requestPermissionSingle,
+            R.id.requestPermissionMultiple})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.okgo_request:
@@ -66,6 +67,14 @@ public class TestActivity extends BaseActivity {
             case R.id.download:
                 // 文件下载
                 UIFactory.startFileDownloadActivity(this, RESULT_OK);
+                break;
+            case R.id.requestPermissionSingle:
+                //
+                UIFactory.startRequestPermissionSingleActivity(this, RESULT_OK);
+                break;
+            case R.id.requestPermissionMultiple:
+                //
+                UIFactory.startRequestPermissionMultipleActivity(this, RESULT_OK);
                 break;
             default:
                 break;

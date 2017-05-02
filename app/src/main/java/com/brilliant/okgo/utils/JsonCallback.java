@@ -1,4 +1,4 @@
-package com.brilliant.api;
+package com.brilliant.okgo.utils;
 
 import com.basemodule.okgo.model.LzyResponse;
 import com.basemodule.okgo.model.SimpleResponse;

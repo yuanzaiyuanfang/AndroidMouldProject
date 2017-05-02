@@ -10,7 +10,7 @@ import com.basemodule.okgo.model.LzyResponse;
 import com.brilliant.R;
 import com.brilliant.api.APIConstant;
 import com.brilliant.api.APIMethod;
-import com.brilliant.api.JsonCallback;
+import com.brilliant.okgo.utils.JsonCallback;
 import com.brilliant.base.BaseActivity;
 import com.brilliant.module.mvpmodle.test.bean.ServerModel;
 import com.brilliant.widget.NumberProgressBar;
